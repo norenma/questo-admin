@@ -1,0 +1,62 @@
+.wrapper {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.form-signin {
+    max-width: 420px;
+    padding: 30px 38px 66px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.form-signin-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.questo-logo {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: block;
+}
+
+.btn-green {
+    background-color: #0FCAAA;
+    color: white;
+    margin: auto;
+    max-width: 195px;
+    margin-top: 40px;
+}
+
+.forgot-password {
+    color: #0FCAAA;
+    margin: auto;
+    text-decoration: underline;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+}
+
+.form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    font-style: italic;
+}
+
+input[type="text"] {
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+input[type="password"] {
+    margin-bottom: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
