@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { HttpQuestionnaireService } from './questionnaire/http-questionnaire.service';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Questo Admin-Tool';
+
+  constructor(private httpQuestionnaireService: HttpQuestionnaireService) {
+
+  }
 }
