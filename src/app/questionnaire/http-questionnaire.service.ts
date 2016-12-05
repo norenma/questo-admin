@@ -20,7 +20,7 @@ export class HttpQuestionnaireService {
   }
   callFirst() {
     console.log("called!");
-    return this.http.get(this.baseUrl, {/*withCredentials: true*/ })
+    return this.http.get(this.baseUrl, {withCredentials: true })
       .toPromise();
   }
 

@@ -1,0 +1,29 @@
+.questionnaire-list {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20vh;
+}
+
+.name {
+    color: rgba(15, 202, 170, 0.81);
+    font-size: 20px;
+}
+
+.heading {
+    color: #666666;
+    font-weight: 600;
+    opacity: 0.8;
+    font-size: 20px;
+    margin-bottom: 35px;
+    display: block;
+}
+
+.btn-result {
+    margin-left: 20px;
+    padding: 8px 27px 8px 27px;
+}
+
+.btn-share {
+    margin-left: 20px;
+    padding: 8px 27px 8px 27px;
+}

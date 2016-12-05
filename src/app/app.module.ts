@@ -10,6 +10,7 @@ import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { QuestionnaireListComponent } from './questionnaire-list/questionnaire-list.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     QuestionnaireListComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
