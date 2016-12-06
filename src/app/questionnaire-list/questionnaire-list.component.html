@@ -1,7 +1,7 @@
 <ul class="questionnaire-list">
   <h2 class="heading"> Mina enkäter </h2>
-  <li *ngFor="let q of questionnaires">
-    <a class="name"> {{q.name}} </a>
+  <li *ngFor="let q of questionnaires" >
+    <a class="name" (click)="goToQuestionnaire(q.id)"> {{q.name}} </a>
     <span class="pull-right">
         <button type="button" class="btn btn-blue btn-result">Se resultat</button>
       <button type="button" class="btn btn-green btn-share">Dela</button>

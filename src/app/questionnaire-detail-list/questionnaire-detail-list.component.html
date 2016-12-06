@@ -1,0 +1,13 @@
+<div *ngIf="questionnaire">
+  <ul>
+    <li> {{questionnaire.name}} </li>
+    <div *ngFor="let category of questionnaire.categories">
+      <li>
+        {{category.name}}
+      </li>
+      <li *ngFor="let question of category.questions">
+        {{question.name}}
+      </li>
+    </div>
+  </ul>
+</div>
