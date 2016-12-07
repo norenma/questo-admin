@@ -1,11 +1,11 @@
-<div *ngIf="questionnaire">
+<div class="list-container" *ngIf="questionnaire">
   <ul>
-    <li> {{questionnaire.name}} </li>
+    <li class="list-item-global"> {{questionnaire.name}} </li>
     <div *ngFor="let category of questionnaire.categories">
-      <li>
+      <li class="list-item-cat">
         {{category.name}}
       </li>
-      <li *ngFor="let question of category.questions">
+      <li class="list-item-question" *ngFor="let question of category.questions">
         {{question.name}}
       </li>
     </div>

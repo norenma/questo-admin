@@ -1,0 +1,15 @@
+.list-item-global {
+    background-color: rgba(15, 202, 170, 0.76);
+}
+
+.list-item-cat {
+    background-color: rgba(15, 202, 170, 0.40);
+}
+
+.list-item-question {
+    border: solid 2px black;
+}
+
+.list-container {
+    width: 20%;
+}
