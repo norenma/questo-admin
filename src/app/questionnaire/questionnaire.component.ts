@@ -34,6 +34,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
       this.http.getQuestionnaire(this.id).then(data => {
         this.questionnaire = this.createQuestionnaire(data);
+
       });
     });
   }
@@ -61,12 +62,10 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       let catTmp = new Category(id, name, description, order);
       questionnaire.addCategory(catTmp);
       let questionsTmp = [];
-      data.questions.forEach(q => {
-        if (q.category_id === catTmp.id) {
-          let id = q.id;
-          let name = q.name;
-          catTmp.addQuestion(new Question(name, id, null, null));
-        }
+      cat.questions.forEach(q => {
+        let id = q.id;
+        let name = q.text;
+        catTmp.addQuestion(new Question(name, id, null, null));
       });
     });
     return questionnaire;

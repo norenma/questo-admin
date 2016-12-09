@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { QuestionnaireDetailListComponent } from './questionnaire-detail-list/questionnaire-detail-list.component';
+import { GlobalComponent } from './global/global.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     QuestionComponent,
     QuestionnaireComponent,
     QuestionnaireDetailListComponent,
+    GlobalComponent,
   ],
   imports: [
     BrowserModule,

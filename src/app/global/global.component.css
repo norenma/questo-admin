@@ -1,0 +1,35 @@
+.container {
+    width: 40%;
+    margin: auto;
+    position: relative;
+    left: 5%;
+}
+
+h2 {
+    margin-bottom: 35px;
+}
+
+.description {
+    width: 100%;
+}
+
+.name {
+    width: 100%;
+}
+
+#desc-form {
+    resize: none;
+}
+
+.answer {
+    width: 45%;
+    display: inline;
+}
+
+.edit-answers {
+    display: inline;
+}
+
+.btn.btn-danger {
+    margin: auto;
+}

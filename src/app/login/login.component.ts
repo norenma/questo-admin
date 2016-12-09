@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.user);
-    this.httpService.login(this.user).then(resp => {
-      console.log(resp);
-      console.log("resp.json()._body", resp.json());
-      if (resp.json() !== false) {
-        console.log("logged in as: ", resp.json().username);
+    this.httpService.login(this.user).then(user => {
+      console.log(user);
+      console.log("resp.json()._body", user);
+      if (user.logged_in) {
+        console.log("logged in as: ", user.username);
         this.router.navigate(['/questionnaires']);
       }
     });
