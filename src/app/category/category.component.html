@@ -1,0 +1,28 @@
+<div class="container">
+
+  <!--name-->
+  <label for="name-form">Namn på kategori</label>
+  <div class="input-group name">
+    <input type="text" class="form-control" id="name-form" aria-describedby="basic-addon3">
+  </div>
+
+  <!--description-->
+  <label for="desc-form">Beskrivning av kategori</label>
+  <div class="input-group description">
+    <textarea name="" id="desc-form" class="form-control" rows="3" required="required"></textarea>
+  </div>
+
+  <hr>
+
+  <app-image-upload></app-image-upload>
+  <app-audio-upload></app-audio-upload>
+
+  <hr>
+
+  <app-category-preview [category]="category"></app-category-preview>
+
+  <div class="text-center"> <button type="button" class="btn btn-danger">Radera kategori</button></div>
+  
+
+
+</div>

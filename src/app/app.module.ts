@@ -13,6 +13,11 @@ import { QuestionComponent } from './question/question.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { QuestionnaireDetailListComponent } from './questionnaire-detail-list/questionnaire-detail-list.component';
 import { GlobalComponent } from './global/global.component';
+import { CategoryComponent } from './category/category.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { AudioUploadComponent } from './audio-upload/audio-upload.component';
+import { CategoryPreviewComponent } from './category-preview/category-preview.component';
+import { QuestionPreviewComponent } from './question-preview/question-preview.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'questionnaires', component: QuestionnaireListComponent },
   { path: 'questionnaire/:id', component: QuestionnaireComponent },
+  { path: 'questionnaire/:id/category/:catId', component: QuestionnaireComponent },
 
 ];
 
@@ -33,6 +39,11 @@ const appRoutes: Routes = [
     QuestionnaireComponent,
     QuestionnaireDetailListComponent,
     GlobalComponent,
+    CategoryComponent,
+    ImageUploadComponent,
+    AudioUploadComponent,
+    CategoryPreviewComponent,
+    QuestionPreviewComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,11 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
+export enum State {
+  Global,
+  Category,
+  Question
+}
 
 @Component({
   selector: 'app-questionnaire',
@@ -23,10 +28,14 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     private http: HttpQuestionnaireService
   ) { }
 
-
+  private states = State;
   private sub: any;
   private id: number;
   private questionnaire: Questionnaire;
+  private state: State = State.Global;
+
+  private currentCategory: Category;
+  private currentQuestion: Question;
 
 
   ngOnInit() {
@@ -73,6 +82,23 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  stateChanged(event) {
+    console.log("state changed!", event);
+    if (event.type === State.Category) {
+      this.currentCategory = event.category;
+      this.currentQuestion = null;
+    } else if (event.type === State.Question) {
+      this.currentQuestion = event.question;
+      this.currentCategory = null;
+    } else {
+      this.currentCategory = null;
+      this.currentQuestion = null;
+    }
+    this.state = event.type;
+
+    console.log("this.state", this.state);
   }
 
 }
