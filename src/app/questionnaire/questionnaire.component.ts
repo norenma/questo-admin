@@ -1,12 +1,13 @@
-import { Question } from '../question';
+import {MediaFile} from '../media-file';
+import {Question} from '../question';
 import * as q from 'q';
-import { Category } from '../category';
-import { Questionnaire } from '../questionnaire';
-import { HttpQuestionnaireService } from './http-questionnaire.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Category} from '../category';
+import {Questionnaire} from '../questionnaire';
+import {HttpQuestionnaireService} from './http-questionnaire.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 export enum State {
@@ -43,7 +44,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
       this.http.getQuestionnaire(this.id).then(data => {
         this.questionnaire = this.createQuestionnaire(data);
-
+        console.log(this.questionnaire);
       });
     });
   }
@@ -70,14 +71,31 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       let order = cat.order;
       let catTmp = new Category(id, name, description, order);
       questionnaire.addCategory(catTmp);
+      this.addImage(catTmp, cat.image);
       let questionsTmp = [];
       cat.questions.forEach(q => {
         let id = q.id;
         let name = q.text;
-        catTmp.addQuestion(new Question(name, id, null, null));
+        let questionTmp: Question = new Question(name, id, null, null);
+        let imgId = q.question_image;
+        this.addImage(questionTmp, imgId);
+        catTmp.addQuestion(questionTmp);
       });
     });
     return questionnaire;
+  }
+
+  addImage(hasImage: {image: MediaFile }, id: number) {
+    if (id) {
+      this.http.getMediaFile(id).then(res => {
+        console.log("res", res);
+        let imgUrl = 'http://0.0.0.0:3000/uploads/' + res.ref;
+        let imgFile = new MediaFile(id, imgUrl);
+        hasImage.image = imgFile;   
+      });
+    } else {
+      hasImage.image = new MediaFile(null, "");
+    }
   }
 
   ngOnDestroy() {

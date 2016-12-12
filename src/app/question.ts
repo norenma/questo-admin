@@ -1,21 +1,21 @@
+import { MediaFile } from './media-file';
 export class Question {
 
     private _name: string;
     private _id: number;
     private _subScale: any;
     private _answer: any;
-    private _image: HTMLImageElement;
-    private _sound: HTMLAudioElement;
+    private _image: MediaFile;
+    private _audio: MediaFile;
 
 
 
-    constructor(name: string, id: number, subScale: any, answer: any, image?: HTMLImageElement, sound?: HTMLAudioElement) {
+    constructor(name: string, id: number, subScale: any, answer: any,
+        image?: string, sound?: string) {
         this._name = name;
         this._id = id;
         this._subScale = subScale;
         this._answer = answer;
-        this._image = image;
-        this._sound = sound;
     }
 
     public get name(): string { return this._name; }
@@ -30,12 +30,11 @@ export class Question {
     public get answer(): any { return this._answer; }
     public set answer(value: any) { this._answer = value; }
 
-    public get sound(): HTMLAudioElement { return this._sound; }
-    public set sound(value: HTMLAudioElement) { this._sound = value; }
+    public get image(): MediaFile { return this._image; }
+    public set image(value: MediaFile) { this._image = value; }
 
-    public get image(): HTMLImageElement { return this._image; }
-    public set image(value: HTMLImageElement) { this._image = value; }
-
+    public get audio(): MediaFile { return this._audio; }
+    public set audio(value: MediaFile) { this._audio = value; }
 
 }
 

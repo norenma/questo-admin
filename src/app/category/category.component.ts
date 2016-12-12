@@ -12,6 +12,7 @@ export class CategoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("cat", this.category);
   }
 
 }

@@ -5,4 +5,9 @@
     margin: 10px auto;
     border: solid 1px #95989A;
     border-radius: 9px;
+    text-align: center;
+}
+
+.preview-container img {
+    width: 50%;
 }

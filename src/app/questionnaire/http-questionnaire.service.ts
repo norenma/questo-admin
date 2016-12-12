@@ -33,7 +33,7 @@ export class HttpQuestionnaireService {
       .toPromise().then(this.extractData).then(this.setUserId).catch(this.handleError);
   }
 
-  private setUserId = (res: any) : any => {
+  private setUserId = (res: any): any => {
     console.log("rees", res);
     console.log("this", this);
     this.userId = res.id;
@@ -67,6 +67,13 @@ export class HttpQuestionnaireService {
 
   private handleError(err) {
     console.log("error when calling server", err);
+  }
+
+  public getMediaFile(media_id: number) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.get(this.baseUrl + 'api/media_files/' + media_id, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
   }
 
 

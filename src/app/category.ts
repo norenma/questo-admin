@@ -1,3 +1,5 @@
+import { MediaFile } from './media-file';
+import * as q from 'q';
 import { Question } from './question';
 
 export class Category {
@@ -5,8 +7,8 @@ export class Category {
     private _name: string;
     private _description: string;
     private _questions: Array<Question> = [];
-    private _image: HTMLImageElement;
-    private _sound: HTMLAudioElement;
+    private _image: MediaFile;
+    private _audio: MediaFile;
     private _order: number;
 
 
@@ -44,16 +46,17 @@ export class Category {
     public get description(): string { return this._description; }
     public set description(value: string) { this._description = value; }
 
-    public get sound(): HTMLAudioElement { return this._sound; }
-    public set sound(value: HTMLAudioElement) { this._sound = value; }
-
-    public get image(): HTMLImageElement { return this._image; }
-    public set image(value: HTMLImageElement) { this._image = value; }
 
     public get order(): number { return this._order; }
     public set order(value: number) { this._order = value; }
 
     public get questions(): Array<Question> { return this._questions; }
     public set questions(value: Array<Question>) { this._questions = value; }
+
+    public get image(): MediaFile { return this._image; }
+    public set image(value: MediaFile) { this._image = value; }
+
+    public get audio(): MediaFile { return this._audio; }
+    public set audio(value: MediaFile) { this._audio = value; }
 
 }
