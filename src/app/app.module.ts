@@ -1,4 +1,4 @@
-import { QuestionnaireService } from './questionnaire.service';
+import { QuestionnaireService } from './questionnaire/questionnaire.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,8 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { AudioUploadComponent } from './audio-upload/audio-upload.component';
 import { CategoryPreviewComponent } from './category-preview/category-preview.component';
 import { QuestionPreviewComponent } from './question-preview/question-preview.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { Ng2UploaderModule } from 'ng2-uploader';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -44,12 +46,14 @@ const appRoutes: Routes = [
     AudioUploadComponent,
     CategoryPreviewComponent,
     QuestionPreviewComponent,
+    QuestionDetailComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
+    Ng2UploaderModule
   ],
   providers: [HttpQuestionnaireService, QuestionnaireService],
   bootstrap: [AppComponent]

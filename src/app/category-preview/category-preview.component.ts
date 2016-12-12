@@ -1,4 +1,4 @@
-import {Category} from '../category';
+import {Category} from '../models/category';
 import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ export class CategoryPreviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("Cat!", this.category);
+    console.log("Category:", this.category);
   }
 
 }

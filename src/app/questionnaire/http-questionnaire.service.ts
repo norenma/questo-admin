@@ -76,6 +76,13 @@ export class HttpQuestionnaireService {
       .toPromise().then(this.extractData).catch(this.handleError);
   }
 
+  public getQuestion(id: number) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.get(this.baseUrl + 'api/questions/' + id, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
 
 
 

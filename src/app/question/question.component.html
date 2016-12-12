@@ -1,53 +1,49 @@
 <div class="container">
-  <h2>Inställningar för quetion</h2>
 
-  <!--name-->
-  <label for="name-form">Namn</label>
-  <div class="input-group name">
-    <input type="text" class="form-control" id="name-form" aria-describedby="basic-addon3">
+  <!--question-->
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <label for="name-form">Frågetext</label>
+      <div class="input-group name">
+        <input type="text" [(ngModel)]="question.name" class="form-control" id="name-form" aria-describedby="basic-addon3">
+      </div>
+    </div>
+
   </div>
 
-  <!--description-->
-  <label for="desc-form">Beskrivning av formulär</label>
-  <div class="input-group description">
-    <textarea name="" id="desc-form" class="form-control" rows="3" required="required"></textarea>
+
+  <div class="row top-buffer">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <label for="answer-form"> Svarsalternativ </label>
+      <select name="" id="" id="answer-form" class="form-control answer" required="required">
+        <option value=""> Ja/nej</option>
+        <option value=""> Ja/nej/kanske</option>
+      </select>
+      <a class="edit-answers"> Redigera svarsalternativ </a>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <label for="answer-form"> Delskala </label>
+      <select name="" id="" id="subscale-form" class="form-control answer" required="required">
+        <option value=""> Ja/nej</option>
+        <option value=""> Ja/nej/kanske</option>
+      </select>
+      <a class="edit-answers"> Redigera delskalor </a>
+    </div>
+
   </div>
 
   <hr>
 
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="">
-      <strong> Samma svarsalternativ för alla frågor </strong> <br>
-Om detta alternaitv är markerat kommer du inte kunna välja svaralternativ för varje enskild fråga.
-    </label>
-  </div>
-
-
-  <select name="" id="" class="form-control answer" required="required">
-    <option value=""> Ja/nej</option>
-    <option value=""> Ja/nej/kanske</option>
-  </select>
-  <a class="edit-answers"> Redigera svarsalternativ </a>
+  <app-image-upload (done)="reloadImage()" [type]="'question'" [id]="question.id"></app-image-upload>
 
   <hr>
 
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="">
-      <strong> Använd delskalor när resultat presenteras
- </strong> <br>
-Om detta alternaitv är markerat kommer kunna välja en delskala till varje fråga som används när 
-resultat presenteras i appen. 
-   </label>
-  </div>
-  <a class="edit-answers"> Redigera delskalor </a>
+  <div class="text-center"> <button type="button" class="btn btn-danger">Radera Fråga</button></div>
 
-  <hr>
+  <app-question-preview [question]="question"></app-question-preview>
 
-  <div class="text-center"> <button type="button" class="btn btn-danger">Radera enkät</button></div>
-  
-  <img src="{{question.image.url}}" alt="">
 
 </div>

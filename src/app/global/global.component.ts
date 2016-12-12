@@ -1,4 +1,4 @@
-import {Questionnaire} from '../questionnaire';
+import {Questionnaire} from '../models/questionnaire';
 import {Component, OnInit, Input} from '@angular/core';
 
 @Component({

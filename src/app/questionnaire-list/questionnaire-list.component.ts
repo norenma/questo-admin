@@ -1,7 +1,7 @@
 import {Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import { HttpQuestionnaireService, User } from '../questionnaire/http-questionnaire.service'
-import {QuestionnaireService} from '../questionnaire.service';
+import {QuestionnaireService} from '../questionnaire/questionnaire.service';
 
 
 
