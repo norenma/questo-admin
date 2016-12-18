@@ -1,53 +1,71 @@
 <div class="container">
-  <h2>Inställningar för formulär</h2>
+  <div class="row">
+    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+      <h2>Inställningar för formulär</h2>
+
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+      <app-share></app-share>
+    </div>
+  </div>
+
+
 
   <!--name-->
   <label for="name-form">Namn</label>
   <div class="input-group name">
-    <input type="text" class="form-control" id="name-form" aria-describedby="basic-addon3">
+    <input type="text" [(ngModel)]="questionnaire.name" class="form-control" id="name-form" aria-describedby="basic-addon3">
   </div>
 
   <!--description-->
   <label for="desc-form">Beskrivning av formulär</label>
   <div class="input-group description">
-    <textarea name="" id="desc-form" class="form-control" rows="3" required="required"></textarea>
+    <textarea name="" [(ngModel)]="questionnaire.description" (change)="questionnaireUpdated()" id="desc-form" class="form-control"
+      rows="3" required="required"></textarea>
   </div>
 
   <hr>
 
 
-  <div class="checkbox">
+  <div>
     <label>
-      <input type="checkbox" value="">
-      <strong> Samma svarsalternativ för alla frågor </strong> <br>
-Om detta alternaitv är markerat kommer du inte kunna välja svaralternativ för varje enskild fråga.
+      <strong> Samma svarsalternativ för alla frågor </strong>
     </label>
   </div>
 
+  <div class="input-group">
 
-  <select name="" id="" class="form-control answer" required="required">
-    <option value=""> Ja/nej</option>
-    <option value=""> Ja/nej/kanske</option>
+    <select [(ngModel)]="currentAnswer" name="" id="" >
+     <option [value]="-1" selected disabled> Välj svarsalternativ</option>
+
+      <option [value]="answerSet.id" *ngFor="let answerSet of questionnaire.answers"> {{answerSet.name}}</option>
   </select>
-  <a class="edit-answers"> Redigera svarsalternativ </a>
+    <span class="">
+  <button class="btn btn-green" type="submit" (click)="sameAnswerChanged()">Sätt på alla frågor</button>
+  </span>
+  </div>
+
+
+
+  <app-answers></app-answers>
 
   <hr>
 
   <div class="checkbox">
     <label>
-      <input type="checkbox" value="">
+      <input type="checkbox" [(ngModel)]="questionnaire.useSubScale" (change)="questionnaireUpdated()">
       <strong> Använd delskalor när resultat presenteras
  </strong> <br>
 Om detta alternaitv är markerat kommer kunna välja en delskala till varje fråga som används när 
 resultat presenteras i appen. 
    </label>
   </div>
-  <a class="edit-answers"> Redigera delskalor </a>
+  <app-subscales [questionnaire]="questionnaire" (updated)="subscaleUpdated($event)"></app-subscales>
 
   <hr>
 
   <div class="text-center"> <button type="button" class="btn btn-danger">Radera enkät</button></div>
-  
+
 
 
 </div>

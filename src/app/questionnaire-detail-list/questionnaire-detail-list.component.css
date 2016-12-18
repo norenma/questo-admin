@@ -38,11 +38,11 @@ ul {
 }
 
 .list-container {
-    width: 25%;
+    width: 30%;
     position: fixed;
     left: 0px;
     top: 15vh;
-    min-width: 350px;
+    min-width: 300px;
 }
 
 .list-container li {

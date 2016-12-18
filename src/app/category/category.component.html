@@ -3,26 +3,29 @@
   <!--name-->
   <label for="name-form">Namn på kategori</label>
   <div class="input-group name">
-    <input type="text" class="form-control" id="name-form" aria-describedby="basic-addon3">
+    <input type="text" [(ngModel)]="category.name" (change)="onUpdate()" class="form-control" id="name-form" aria-describedby="basic-addon3">
   </div>
 
   <!--description-->
   <label for="desc-form">Beskrivning av kategori</label>
   <div class="input-group description">
-    <textarea name="" id="desc-form" class="form-control" rows="3" required="required"></textarea>
+    <textarea [(ngModel)]="category.description" (change)="onUpdate()" name="" id="desc-form" class="form-control" rows="3" required="required"></textarea>
   </div>
 
   <hr>
 
-  <app-image-upload></app-image-upload>
-  <app-audio-upload></app-audio-upload>
+  <app-image-upload (done)="imageUploaded($event)"></app-image-upload>
+  <app-audio-upload (done)="audioUploaded($event)"></app-audio-upload>
+  <audio #audio *ngIf="category.audio" controls>
+    <source  src="{{category.audio.url}}" type="audio/mpeg"> Your browser does not support the audio element.
+  </audio>
 
   <hr>
 
   <app-category-preview [category]="category"></app-category-preview>
 
   <div class="text-center"> <button type="button" class="btn btn-danger">Radera kategori</button></div>
-  
+
 
 
 </div>

@@ -3,7 +3,7 @@
     <li class="list-item-global" (click)="goToGlobal(questionnaire.id)"> {{questionnaire.name}} </li>
     <div *ngFor="let category of questionnaire.categories">
       <li class="list-item-cat" (click)="goToCat(category)">
-        {{category.description}}
+        {{category.name}}
       </li>
       <li class="list-item-question" *ngFor="let question of category.questions" (click)="goToQuestion(question)">
         {{question.name}}

@@ -1,5 +1,10 @@
+import { Subscale } from '../models/subscale';
+import { Router } from '@angular/router';
+import { Category } from '../models/category';
+import { Questionnaire } from '../models/questionnaire';
+import { Question } from '../models/question';
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptionsArgs, ResponseContentType, Response } from '@angular/http';
+import { Http, RequestOptionsArgs, Headers, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -61,7 +66,7 @@ export class HttpQuestionnaireService {
   getQuestionnaire(qId) {
     let options: RequestOptionsArgs = {};
     options.withCredentials = true;
-    return this.http.get(this.baseUrl + 'api/questionnaires/fetch/' + qId, options)
+    return this.http.get(this.baseUrl + 'api/questionnaires/' + qId, options)
       .toPromise().then(this.extractData).catch(this.handleError);
   }
 
@@ -80,6 +85,84 @@ export class HttpQuestionnaireService {
     let options: RequestOptionsArgs = {};
     options.withCredentials = true;
     return this.http.get(this.baseUrl + 'api/questions/' + id, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public updateQuestion(question: Question) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'text': question.name,
+      'question_img': question.image ? question.image.id : null,
+      'audio': question.audio ? question.audio.id : null,
+      'subscale' : question.subScale ? question.subScale.id : null, 
+      'answer' : question.answer ? question.answer.id : null
+    }
+    return this.http.patch(this.baseUrl + 'api/questions/' + question.id, body, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public updateQuestionnaire(questionnaire: Questionnaire) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    console.log("questionnaire.useSubScale", questionnaire.useSubScale);
+    let body = {
+      'name': questionnaire.name,
+      'desc': questionnaire.description,
+      'useSubScale': questionnaire.useSubScale
+    }
+    console.log("body", body);
+
+    /*    let body = {
+          "text": "Har du många vänner ?1",
+          "question_img": 61
+        }*/
+    return this.http.patch(this.baseUrl + 'api/questionnaires/' + questionnaire.id, body, options)
+      .toPromise().catch(this.handleError);
+    //return this.http.get(this.baseUrl + 'api/questionnaires/' + questionnaire.id, options).toPromise().catch(this.handleError);
+  }
+
+  public updateCategory(category: Category) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'name': category.name,
+      'audio': category.audio ? category.audio.id : null,
+      'image': category.image ? category.image.id : null,
+      'description': category.description,
+      'order': category.order
+    }
+    return this.http.patch(this.baseUrl + 'api/categories/' + category.id, body, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public deleteSubScale(subscale: Subscale) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.delete(this.baseUrl + 'api/result_categories/' + subscale.id, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public updateSubScale(subscale: Subscale) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'name': subscale.name,
+      'order': subscale.order
+    }
+    return this.http.patch(this.baseUrl + 'api/result_categories/' + subscale.id, body, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public createSubScale(subscale: Subscale, questionnaireId: number) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'name': subscale.name,
+      'order': subscale.order,
+      'questionnaire_id': questionnaireId,
+    }
+    return this.http.post(this.baseUrl + 'api/result_categories/', body, options)
       .toPromise().then(this.extractData).catch(this.handleError);
   }
 

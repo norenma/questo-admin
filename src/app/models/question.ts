@@ -1,10 +1,12 @@
-import { MediaFile } from './media-file';
+import {Answer, AnswerSet} from './answer-set';
+import {Subscale} from './subscale';
+import {MediaFile} from './media-file';
 export class Question {
 
     private _name: string;
     private _id: number;
-    private _subScale: any;
-    private _answer: any;
+    private _subScale: Subscale;
+    private _answer: AnswerSet;
     private _image: MediaFile;
     private _audio: MediaFile;
 
@@ -24,11 +26,11 @@ export class Question {
     public get id(): number { return this._id; }
     public set id(value: number) { this._id = value; }
 
-    public get subScale(): any { return this._subScale; }
-    public set subScale(value: any) { this._subScale = value; }
+    public get subScale(): Subscale { return this._subScale; }
+    public set subScale(value: Subscale) { this._subScale = value; }
 
-    public get answer(): any { return this._answer; }
-    public set answer(value: any) { this._answer = value; }
+    public get answer(): AnswerSet { return this._answer; }
+    public set answer(value: AnswerSet) { this._answer = value; }
 
     public get image(): MediaFile { return this._image; }
     public set image(value: MediaFile) { this._image = value; }

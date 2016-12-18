@@ -1,5 +1,7 @@
+import {Answer, AnswerSet} from './answer-set';
+import {Subscale} from './subscale';
 import { Question } from './question';
-import { Category } from './category';
+import {Category} from './category';
 
 export class Questionnaire {
 
@@ -10,6 +12,8 @@ export class Questionnaire {
     private _sameAnswer: boolean;
     private _answer: string;
     private _id: number;
+    private _subscales: Array<Subscale> = [];
+    private _answers : Array<AnswerSet> = [];
 
 
     constructor(name: string, id: number, useSubScale: boolean, description: string,
@@ -22,11 +26,15 @@ export class Questionnaire {
         this._answer = answer;
     }
 
+
+	public get $categories(): Array<Category>  {
+		return this.categories;
+	}
     /**
      * Adds a new category to the questionnaire.
      */
     public addCategory(cat: Category) {
-        this.categories.push(cat);
+    this.categories.push(cat);
     }
 
     /**
@@ -42,8 +50,12 @@ export class Questionnaire {
     set name(name: string) { this._name = name; }
     get name() { return this._name; }
 
-    set useSubScale(useSubScale: boolean) { this._useSubScale = useSubScale; }
-    get useSubScale() { return this._useSubScale; }
+    set useSubScale(useSubScale: boolean) {
+        this._useSubScale = useSubScale;
+    }
+    get useSubScale() {
+        return this._useSubScale;
+    }
 
     set description(description: string) { this._description = description; }
     get description() { return this._description; }
@@ -56,4 +68,21 @@ export class Questionnaire {
 
     get id(): number { return this._id; }
 
+    get subscales(): Array<Subscale> {
+        return this._subscales;
+    }
+
+    set subscales(value: Array<Subscale>) {
+        this._subscales = value;
+    }
+
+
+	public get answers(): Array<AnswerSet>  {
+		return this._answers;
+	}
+
+	public set answers(value: Array<AnswerSet> ) {
+		this._answers = value;
+	}
+    
 }

@@ -1,4 +1,8 @@
-<div class="preview-container">
-  <img src="{{category.image.url}}" alt="">
-  <p> {{category.description}} </p>
+<div class="outer-container">
+  <p class="preview-text">Förhandsgranskning</p>
+  <div class="preview-container">
+    <img *ngIf="category.image?.id !== null" src="{{category.image.url}}" alt="">
+    <div *ngIf="!category.image?.id" class="placeholder"></div>
+    <p> {{category.description}} </p>
+  </div>
 </div>

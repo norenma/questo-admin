@@ -2,8 +2,9 @@
 <app-questionnaire-detail-list (stateChanged)="stateChanged($event)" [questionnaire]="questionnaire"></app-questionnaire-detail-list>
 
 <!--The different views in the main container-->
-<div [ngSwitch]="state">
+
+<div class="detail-container" [ngSwitch]="state">
     <app-global *ngSwitchCase="states.Global" [questionnaire]="questionnaire"></app-global>
     <app-category *ngSwitchCase="states.Category" [category]="currentCategory"></app-category>
-    <app-question *ngSwitchCase="states.Question" [question]="currentQuestion"></app-question>
+    <app-question *ngSwitchCase="states.Question" [questionnaire]="questionnaire"  [question]="currentQuestion"></app-question>
 </div>

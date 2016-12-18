@@ -20,6 +20,14 @@ import { CategoryPreviewComponent } from './category-preview/category-preview.co
 import { QuestionPreviewComponent } from './question-preview/question-preview.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { Ng2UploaderModule } from 'ng2-uploader';
+import { ShareComponent } from './share/share.component';
+import * as NG2Bootstrap from 'ng2-bootstrap';
+import { SubscalesComponent } from './subscales/subscales.component';
+import { AnswersComponent } from './answers/answers.component';
+import { SubscalesListComponent } from './subscales/subscales-list/subscales-list.component';
+import {DndModule} from 'ng2-dnd';
+
+
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -47,13 +55,21 @@ const appRoutes: Routes = [
     CategoryPreviewComponent,
     QuestionPreviewComponent,
     QuestionDetailComponent,
+    ShareComponent,
+    SubscalesComponent,
+    AnswersComponent,
+    SubscalesListComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    Ng2UploaderModule
+    Ng2UploaderModule,
+    NG2Bootstrap.AlertModule,
+    NG2Bootstrap.ModalModule,
+    DndModule.forRoot(),
+
   ],
   providers: [HttpQuestionnaireService, QuestionnaireService],
   bootstrap: [AppComponent]

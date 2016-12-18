@@ -1,0 +1,31 @@
+.btn-share {}
+
+.modal-content {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    top: 10vh;
+    padding-bottom: 60px;
+}
+
+.modal-dialog.modal-lg {
+    max-width: 500px;
+    margin: 0 auto;
+    top: 10vh;
+    padding-bottom: 60px;
+}
+
+.rights-box label {
+    font-weight: normal;
+    display: block;
+}
+
+.modal-body .btn-share {
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+a {
+    color: rgba(15, 202, 170, 1);
+}

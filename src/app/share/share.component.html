@@ -1,0 +1,59 @@
+<!-- Large modal -->
+<button class="btn btn-share btn-green" (click)="lgModal.show()">Dela enkät</button>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Dela</h4>
+      </div>
+      <div class="modal-body">
+
+
+
+        <div class="row">
+          <div class="form-group">
+            <label for="input-share-to" class="control-label">Dela till</label>
+            <input type="text" name="input-to" id="input-share-to" placeholder="Ange namn eller email..." class="form-control" required="required">
+          </div>
+        </div>
+        <hr>
+
+        <label> Rättigheter </label>
+        <div class="rights-box"><label class="disabled">
+            <input type="checkbox" disabled checked="true">
+            Kan använda enkät
+          </label>
+          <label>
+            <input type="checkbox" value="">
+            Kan använda enkät
+          </label>
+        </div>
+
+        <label> Svar samlas in </label>
+        <div class="rights-box">
+          <label>
+            <input type="checkbox" value="">
+            Kan använda enkät
+          </label>
+          <label>
+            <input type="checkbox" value="">
+            Kan använda enkät
+          </label>
+        </div>
+
+        <button class="btn btn-share btn-green pull-right" (click)="lgModal.show()">Dela</button>
+
+
+        <!--modal body end-->
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>

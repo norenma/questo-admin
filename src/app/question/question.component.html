@@ -6,7 +6,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <label for="name-form">Frågetext</label>
       <div class="input-group name">
-        <input type="text" [(ngModel)]="question.name" class="form-control" id="name-form" aria-describedby="basic-addon3">
+        <input type="text" [(ngModel)]="question.name" (change)="updateQuestion()" class="form-control" id="name-form" aria-describedby="basic-addon3">
       </div>
     </div>
 
@@ -17,18 +17,18 @@
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <label for="answer-form"> Svarsalternativ </label>
-      <select name="" id="" id="answer-form" class="form-control answer" required="required">
-        <option value=""> Ja/nej</option>
-        <option value=""> Ja/nej/kanske</option>
+
+      <select [ngModel]="question.answer?.id" (ngModelChange)="answerChanged($event)" class="form-control answer" name="" id="">
+          <option [value]="answerSet.id" *ngFor="let answerSet of questionnaire.answers"> {{answerSet.name}}</option>
       </select>
+
       <a class="edit-answers"> Redigera svarsalternativ </a>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <label for="answer-form"> Delskala </label>
-      <select name="" id="" id="subscale-form" class="form-control answer" required="required">
-        <option value=""> Ja/nej</option>
-        <option value=""> Ja/nej/kanske</option>
+      <select name="" id="" id="subscale-form" [ngModel]="question.subScale?.id" (ngModelChange)="subscaleChange($event)" class="form-control answer" required="required">
+        <option *ngFor="let sub of questionnaire.subscales" [value]="sub.id"> {{sub.name}}</option>
       </select>
       <a class="edit-answers"> Redigera delskalor </a>
     </div>
@@ -37,13 +37,16 @@
 
   <hr>
 
-  <app-image-upload (done)="reloadImage()" [type]="'question'" [id]="question.id"></app-image-upload>
-
+  <app-image-upload (done)="imageUploaded($event)" [id]="question.id"></app-image-upload>
+  <app-audio-upload (done)="audioUploaded($event)"></app-audio-upload>
+  <audio #audio *ngIf="question.audio" controls>
+    <source src="{{question.audio.url}}" type="audio/mpeg"> Your browser does not support the audio element.
+  </audio>
   <hr>
 
-  <div class="text-center"> <button type="button" class="btn btn-danger">Radera Fråga</button></div>
 
   <app-question-preview [question]="question"></app-question-preview>
+  <div class="text-center"> <button type="button" class="btn btn-danger">Radera Fråga</button></div>
 
 
 </div>

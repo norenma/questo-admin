@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel">
+      <p class="sort-text"> Dra för att byta ordning </p>
+      <ul class="list-group" dnd-sortable-container (onDropSuccess)="update()" [sortableData]="subscales">
+        <li *ngFor="let item of subscales; let i = index" (onDropSuccess)="update()" [ngClass]="{green: i%2===0}" class="list-group-item"
+          dnd-sortable [sortableIndex]="i">
+          <span> {{i+1}}. {{item.name}} </span>
+          <span class="glyphicon glyphicon-trash pull-right delete-btn" aria-hidden="true" (click)="delete(item)"></span>
+
+
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="row add-new">
+    <label for="input-add-subscale"> Lägg till ny delskala </label>
+  </div>
+
+  <div class="row add-new">
+    <form (submit)="newSubscale()">
+      <div class="input-group">
+        <input type="text" name="name" id="input-add-subscale" class="form-control" [(ngModel)]="newName" required="required">
+        <span class="input-group-btn">
+        <button class="btn btn-green" type="submit">Lägg till</button>
+      </span>
+      </div>
+    </form>
+  </div>
+
+</div>

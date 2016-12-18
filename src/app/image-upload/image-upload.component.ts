@@ -17,11 +17,8 @@ export class ImageUploadComponent implements OnInit {
     sizeLimit = 2000000;
 
     ngOnInit() {
-        console.log("type", this.type);
-        console.log("id", this.id);
         this.options = {
-            url: 'http://0.0.0.0:3000/api/' + this.type + 's/upload_image',
-            data: { 'id': this.id }
+            url: 'http://0.0.0.0:3000/api/media_files'
         };
     }
     handleUpload(data): void {
@@ -30,7 +27,7 @@ export class ImageUploadComponent implements OnInit {
             data = JSON.parse(data.response);
             console.log("res", data);
             this.uploadFile = data;
-            this.done.emit();
+            this.done.emit(data);
         }
     }
 

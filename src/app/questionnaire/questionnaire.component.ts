@@ -1,13 +1,16 @@
-import { MediaFile } from '../models/media-file';
-import { Question } from '../models/question';
+import {Subscale} from '../models/subscale';
+import {QuestionnaireService} from './questionnaire.service';
+import {MediaFile} from '../models/media-file';
+import {Question} from '../models/question';
 import * as q from 'q';
-import { Category } from '../models/category';
-import { Questionnaire } from '../models/questionnaire';
-import { HttpQuestionnaireService } from './http-questionnaire.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Category} from '../models/category';
+import {Questionnaire} from '../models/questionnaire';
+import {HttpQuestionnaireService} from './http-questionnaire.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Answer, AnswerSet} from  '../models/answer-set';
 
 
 export enum State {
@@ -26,8 +29,11 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private http: HttpQuestionnaireService
-  ) { }
+    private http: HttpQuestionnaireService,
+    private questionnaires: QuestionnaireService
+  ) {
+    this.questionnaire = new Questionnaire("", 0, false, "", false, "");
+  }
 
   private states = State;
   private sub: any;
@@ -44,7 +50,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
       this.http.getQuestionnaire(this.id).then(data => {
         this.questionnaire = this.createQuestionnaire(data);
-        console.log(this.questionnaire);
+        console.log("Questionnaire", this.questionnaire);
       });
     });
   }
@@ -64,6 +70,21 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     let sameAnswer = false; // TODO
     let questionnaire = new Questionnaire(name, qId, useSubScales, description,
       sameAnswer, null);
+    questionnaire.subscales = data.result_cats.map(subscale => {
+      return new Subscale(subscale.id, subscale.name, subscale.order);
+    });
+    for(let key in data.response_options){
+      let answerSetD = data.response_options[key];
+      let answerSet = new AnswerSet(answerSetD.info.name, answerSetD.info.id, []);
+      console.log(answerSetD);
+      let resp = JSON.parse(answerSetD.response_items);
+      console.log("Resp!", resp);
+      answerSet.answers = resp.map(ans => {
+        return new Answer(ans.label, ans.value, ans.id, ans.audio);
+      });
+      questionnaire.answers.push(answerSet);
+    }
+
     data.categories.forEach(cat => {
       let id = cat.id;
       let name = cat.name;
@@ -71,6 +92,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       let order = cat.order;
       let catTmp = new Category(id, name, description, order);
       questionnaire.addCategory(catTmp);
+      this.addAudio(catTmp, cat.audio);
       this.addImage(catTmp, cat.image);
       let questionsTmp = [];
       cat.questions.forEach(q => {
@@ -78,7 +100,11 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
         let name = q.text;
         let questionTmp: Question = new Question(name, id, null, null);
         let imgId = q.question_image;
+        this.addAudio(questionTmp, q.question_audio);
         this.addImage(questionTmp, imgId);
+        questionTmp.answer = questionnaire.answers.find(tmp => {return q.response_id === tmp.id});
+        console.log("Question from server:", q);
+        questionTmp.subScale = questionnaire.subscales.find(sub => {return sub.id === q.represent_category_id});
         catTmp.addQuestion(questionTmp);
       });
     });
@@ -96,6 +122,23 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     } else {
       hasImage.image = new MediaFile(null, "");
     }
+  }
+
+  addAudio(hasAudio: { audio: MediaFile }, id: number) {
+    if (id) {
+      this.http.getMediaFile(id).then(res => {
+        console.log("res", res);
+        let audioUrl = 'http://0.0.0.0:3000/uploads/' + res.ref;
+        let audioFile = new MediaFile(id, audioUrl);
+        hasAudio.audio = audioFile;
+      });
+    } else {
+      hasAudio.audio = new MediaFile(null, "");
+    }
+  }
+
+  questionnaireUpdated() {
+
   }
 
   ngOnDestroy() {

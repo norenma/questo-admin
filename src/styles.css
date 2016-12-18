@@ -23,3 +23,28 @@ ul {
 .top-buffer {
     margin-top: 20px;
 }
+
+select {
+    height: 32px;
+}
+
+.detail-container .container {
+    width: 50%;
+    margin: auto;
+    margin-top: 6vh;
+}
+
+label {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.container hr {
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+
+/*.disabled {
+    color: rgb(200, 200, 200);
+}*/

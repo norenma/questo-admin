@@ -1,9 +1,9 @@
-.container {
+/*.container {
     width: 40%;
     margin: auto;
     position: relative;
     left: 5%;
-}
+}*/
 
 h2 {
     margin-bottom: 35px;
@@ -34,3 +34,6 @@ h2 {
     margin: auto;
 }
 
+.text-center {
+    margin-top: 40px;
+}

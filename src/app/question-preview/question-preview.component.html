@@ -1,4 +1,9 @@
-<div class="preview-container">
-  <img src="{{question.image.url}}" alt="">
-  <p> {{question.name}} </p>
+<div class="outer-container">
+  <p class="preview-text">Förhandsgranskning</p>
+  <div class="preview-container">
+    <img *ngIf="question.image?.id !== null" src="{{question.image.url}}" alt="">
+    <div *ngIf="!question.image?.id" class="placeholder"></div>
+    <p> {{question.name}} </p>
+    <div class="ans-item" *ngFor="let ans of question.answer?.answers">{{ans.label}}</div>
+  </div>
 </div>

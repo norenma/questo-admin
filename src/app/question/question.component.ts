@@ -1,7 +1,8 @@
-import {MediaFile} from '../models/media-file';
-import {QuestionnaireService} from '../questionnaire/questionnaire.service';
-import {Question} from '../models/question';
-import {Component, OnInit, Input} from '@angular/core';
+import { Questionnaire } from '../models/questionnaire';
+import { MediaFile } from '../models/media-file';
+import { QuestionnaireService } from '../questionnaire/questionnaire.service';
+import { Question } from '../models/question';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -11,17 +12,53 @@ import {Component, OnInit, Input} from '@angular/core';
 export class QuestionComponent implements OnInit {
 
   @Input() question: Question;
+  @ViewChild('audio') audio: ElementRef;
+  @Input() questionnaire: Questionnaire;
+  answer: any;
+  currentSub: any;
+
   constructor(private questionnaires: QuestionnaireService) { }
 
   ngOnInit() {
-    console.log(this.question);
+    console.log("on init", this.question);
+    this.answer = this.question.answer.id;
+    this.currentSub = this.question.subScale ? this.question.subScale.id : null;
   }
 
-  reloadImage() {
-    this.questionnaires.getQuestionImage(this.question).then(img => {
-      console.log(img);
-      this.question.image = img;
-    });
+  imageUploaded(data) {
+    console.log(data);
+    let imgUrl = 'http://0.0.0.0:3000/uploads/' + data.ref;
+    console.log("img uploaded");
+    let imgFile = new MediaFile(data.id, imgUrl);
+    this.question.image = imgFile;
+    console.log("d", this.question);
+    this.questionnaires.updateQuestion(this.question);
+  }
+
+  audioUploaded(data) {
+    console.log(data);
+    let audioUrl = 'http://0.0.0.0:3000/uploads/' + data.ref;
+    console.log("audio uploaded");
+    let audioFile = new MediaFile(data.id, audioUrl);
+    this.question.audio = audioFile;
+    this.questionnaires.updateQuestion(this.question);
+    this.audio.nativeElement.load();
+  }
+
+  updateQuestion() {
+    console.log("change");
+    this.questionnaires.updateQuestion(this.question);
+  }
+
+  answerChanged(event) {
+    this.question.answer = this.questionnaire.answers.find(ans => { return parseInt(event + "") === ans.id });
+    this.updateQuestion();
+  }
+
+  subscaleChange(event) {
+    let subscale = this.questionnaire.subscales.find(sub => { return sub.id === parseInt(event + "") });
+    this.question.subScale = subscale;
+    this.updateQuestion();
   }
 
 }
