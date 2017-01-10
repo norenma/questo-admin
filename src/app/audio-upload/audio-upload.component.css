@@ -1,0 +1,15 @@
+#file {
+    display: none;
+}
+
+label {
+    background-color: rgba(15, 202, 170, 0.81);
+    color: white;
+    font-weight: 100;
+    margin: 0;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    
+}

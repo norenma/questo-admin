@@ -1,5 +1,5 @@
-import {Router} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
+import {Router, Event} from '@angular/router';
+import {ViewChild, Component, OnInit} from '@angular/core';
 import { HttpQuestionnaireService, User } from '../questionnaire/http-questionnaire.service'
 import {QuestionnaireService} from '../questionnaire/questionnaire.service';
 
@@ -16,19 +16,26 @@ export class QuestionnaireListComponent implements OnInit {
 
   //questionnaires: any[] = [{"name": "12"}, {"name": "ewfre"}];
   ngOnInit() {
-/*    this.httpService.getQuestionnaires().then(resp => {
-      console.log(resp.json());
-      this.questionnaires = resp.json();
-    });*/
+    /*    this.httpService.getQuestionnaires().then(resp => {
+          console.log(resp.json());
+          this.questionnaires = resp.json();
+        });*/
 
   }
 
-  get questionnaires(){
+  public items = [
+      { name: 'John', otherProperty: 'Foo' },
+      { name: 'Joe', otherProperty: 'Bar' }
+  ];
+
+  get questionnaires() {
     return this.questionnairesService.questionnaires;
   }
 
   goToQuestionnaire(id) {
     this.router.navigate(['/questionnaire/', id]);
   }
+
+
 
 }

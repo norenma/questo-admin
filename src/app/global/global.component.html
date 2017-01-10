@@ -35,8 +35,8 @@
 
   <div class="input-group">
 
-    <select [(ngModel)]="currentAnswer" name="" id="" >
-     <option [value]="-1" selected disabled> Välj svarsalternativ</option>
+    <select [(ngModel)]="currentAnswer" name="" id="">
+     <option [value]="null" selected disabled> Välj svarsalternativ</option>
 
       <option [value]="answerSet.id" *ngFor="let answerSet of questionnaire.answers"> {{answerSet.name}}</option>
   </select>
@@ -47,9 +47,10 @@
 
 
 
-  <app-answers></app-answers>
+<app-answers [questionnaire]="questionnaire" [currentAnswerId]="currentAnswer"></app-answers>
+  
 
-  <hr>
+<hr>
 
   <div class="checkbox">
     <label>

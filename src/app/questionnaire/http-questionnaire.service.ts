@@ -1,5 +1,6 @@
+import { Answer, AnswerSet } from '../models/answer-set';
 import { Subscale } from '../models/subscale';
-import { Router } from '@angular/router';
+
 import { Category } from '../models/category';
 import { Questionnaire } from '../models/questionnaire';
 import { Question } from '../models/question';
@@ -95,8 +96,8 @@ export class HttpQuestionnaireService {
       'text': question.name,
       'question_img': question.image ? question.image.id : null,
       'audio': question.audio ? question.audio.id : null,
-      'subscale' : question.subScale ? question.subScale.id : null, 
-      'answer' : question.answer ? question.answer.id : null
+      'subscale': question.subScale ? question.subScale.id : null,
+      'answer': question.answer ? question.answer.id : null
     }
     return this.http.patch(this.baseUrl + 'api/questions/' + question.id, body, options)
       .toPromise().catch(this.handleError);
@@ -166,6 +167,105 @@ export class HttpQuestionnaireService {
       .toPromise().then(this.extractData).catch(this.handleError);
   }
 
+  public newCat(questionnaire: Questionnaire, order: number) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'order': order,
+      'qId': questionnaire.id,
+    }
+    return this.http.post(this.baseUrl + 'api/categories/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public newQuestion(cat: Category, order: number) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'order': order,
+      'cat': cat.id,
+    }
+    return this.http.post(this.baseUrl + 'api/questions/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public deleteQuestion(id) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.delete(this.baseUrl + 'api/questions/' + id, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public deleteQuestionnarie(id) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.delete(this.baseUrl + 'api/questionnaires/' + id, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public deleteCategory(id) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.delete(this.baseUrl + 'api/categories/' + id, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public deleteAnswerSet(answerSet: AnswerSet) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.delete(this.baseUrl + 'api/response_options/' + answerSet.id, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public updateAnswerSet(answerSet: AnswerSet) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'name': answerSet.name
+    }
+    return this.http.patch(this.baseUrl + 'api/response_options/' + answerSet.id, body, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public createAnswerSet(questionnaireId: number) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'questionnaire_id': questionnaireId,
+    }
+    return this.http.post(this.baseUrl + 'api/response_options/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  public deleteAnswer(answer: Answer) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.delete(this.baseUrl + 'api/response_options_items/' + answer.id, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public updateAnswer(answer: Answer) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    console.log("updating answer", answer);
+    let body = {
+      'label': answer.label,
+      'value': answer.value,
+      'audio': answer.audio.id
+    }
+    return this.http.patch(this.baseUrl + 'api/response_options_items/' + answer.id, body, options)
+      .toPromise().catch(this.handleError);
+  }
+
+  public createAnswer(answerSet: AnswerSet) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'id': answerSet.id
+    }
+    return this.http.post(this.baseUrl + 'api/response_options_items/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
 
 
 

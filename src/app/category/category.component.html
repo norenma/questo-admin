@@ -1,13 +1,13 @@
 <div class="container">
 
   <!--name-->
-  <label for="name-form">Namn på kategori</label>
+  <label for="name-form">Instruktions-text</label>
   <div class="input-group name">
     <input type="text" [(ngModel)]="category.name" (change)="onUpdate()" class="form-control" id="name-form" aria-describedby="basic-addon3">
   </div>
 
   <!--description-->
-  <label for="desc-form">Beskrivning av kategori</label>
+  <label for="desc-form">Beskrivning</label>
   <div class="input-group description">
     <textarea [(ngModel)]="category.description" (change)="onUpdate()" name="" id="desc-form" class="form-control" rows="3" required="required"></textarea>
   </div>
@@ -24,7 +24,7 @@
 
   <app-category-preview [category]="category"></app-category-preview>
 
-  <div class="text-center"> <button type="button" class="btn btn-danger">Radera kategori</button></div>
+  <div class="text-center"> <button (click)="delete()" type="button" class="btn btn-danger">Radera kategori</button></div>
 
 
 

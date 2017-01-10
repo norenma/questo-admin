@@ -1,0 +1,36 @@
+<div>
+
+  <label for="input-name">Namn på svaralternativ</label>
+  <input type="text" (change)="updateAnswerSet()" [(ngModel)]="answer.name" name="" id="input-name" class="form-control" value=""
+    required="required" pattern="" title="">
+</div>
+
+<label> Svar </label>
+<div class="panel panel-default edit-items-panel">
+  <div class="panel-heading">
+    <span>Namn</span>
+    <span>Svarsvärde</span>
+    <span>Ljudfil</span>
+  </div>
+  <div class="panel-body" id="edit-answer-items">
+    <ul>
+      <li class="answer-item" *ngFor="let answerItem of answer.answers">
+        <input type="text" [(ngModel)]="answerItem.label" name="" id="input-name" class="form-control" value="" required="required"
+          pattern="" title="" (change)="updateAnswer(answerItem)">
+
+        <input type="text" [(ngModel)]="answerItem.value" name="" id="input-name" class="form-control" value="" required="required"
+          pattern="" title="" (change)="updateAnswer(answerItem)">
+        <span class="file-upload"> <app-audio-upload (done)="audioUploaded($event, answerItem)"></app-audio-upload>
+<audio #audio *ngIf="answerItem.audio" controls>
+<source src="{{answerItem.audio.url}}" type="audio/mpeg"> Your browser does not support the audio element.
+        </audio>
+        </span>
+
+        <span class="glyphicon glyphicon-trash pull-right trash" (click)="deleteAnswer(answerItem)" aria-hidden="true"></span>
+
+      </li>
+    </ul>
+    <button class="btn btn-share btn-green pull-left" (click)="addAnswer()">Lägg till svar</button>
+    <button class="btn btn-danger pull-right" (click)="deleteAnswerSet()"> Radera svarsuppsättning </button>
+  </div>
+</div>

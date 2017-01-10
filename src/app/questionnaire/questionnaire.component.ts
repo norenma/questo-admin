@@ -1,16 +1,16 @@
-import {Subscale} from '../models/subscale';
-import {QuestionnaireService} from './questionnaire.service';
-import {MediaFile} from '../models/media-file';
-import {Question} from '../models/question';
+import { Subscale } from '../models/subscale';
+import { QuestionnaireService } from './questionnaire.service';
+import { MediaFile } from '../models/media-file';
+import { Question } from '../models/question';
 import * as q from 'q';
-import {Category} from '../models/category';
-import {Questionnaire} from '../models/questionnaire';
-import {HttpQuestionnaireService} from './http-questionnaire.service';
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import { Category } from '../models/category';
+import { Questionnaire } from '../models/questionnaire';
+import { HttpQuestionnaireService } from './http-questionnaire.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Answer, AnswerSet} from  '../models/answer-set';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Answer, AnswerSet } from '../models/answer-set';
 
 
 export enum State {
@@ -73,14 +73,17 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     questionnaire.subscales = data.result_cats.map(subscale => {
       return new Subscale(subscale.id, subscale.name, subscale.order);
     });
-    for(let key in data.response_options){
+    for (let key in data.response_options) {
       let answerSetD = data.response_options[key];
       let answerSet = new AnswerSet(answerSetD.info.name, answerSetD.info.id, []);
       console.log(answerSetD);
       let resp = JSON.parse(answerSetD.response_items);
       console.log("Resp!", resp);
       answerSet.answers = resp.map(ans => {
-        return new Answer(ans.label, ans.value, ans.id, ans.audio);
+        let answer = new Answer(ans.label, ans.value, ans.id, null); 
+        console.log("answer sound ", ans);
+        this.addAudio(answer, ans.audio);
+        return answer;
       });
       questionnaire.answers.push(answerSet);
     }
@@ -100,11 +103,13 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
         let name = q.text;
         let questionTmp: Question = new Question(name, id, null, null);
         let imgId = q.question_image;
+        let catId = q.category_id;
         this.addAudio(questionTmp, q.question_audio);
         this.addImage(questionTmp, imgId);
-        questionTmp.answer = questionnaire.answers.find(tmp => {return q.response_id === tmp.id});
+        questionTmp.answer = questionnaire.answers.find(tmp => { return q.response_id === tmp.id });
         console.log("Question from server:", q);
-        questionTmp.subScale = questionnaire.subscales.find(sub => {return sub.id === q.represent_category_id});
+        questionTmp.subScale = questionnaire.subscales.find(sub => { return sub.id === q.represent_category_id });
+        questionTmp.catId = catId;
         catTmp.addQuestion(questionTmp);
       });
     });
@@ -160,6 +165,12 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     this.state = event.type;
 
     console.log("this.state", this.state);
+  }
+
+  onDelete() {
+    this.currentCategory = null;
+    this.currentQuestion = null;
+    this.state = State.Global;
   }
 
 }

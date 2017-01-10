@@ -1,3 +1,4 @@
+import { Answer, AnswerSet } from '../models/answer-set';
 import { Subscale } from '../models/subscale';
 import { Category } from '../models/category';
 import { MediaFile } from '../models/media-file';
@@ -74,4 +75,50 @@ export class QuestionnaireService {
       console.log("deleted", res);
     });
   }
+
+  public newCat(questionnaire: Questionnaire, order: number) {
+    return this.httpService.newCat(questionnaire, order).then(res => {
+      console.log("res", res);
+      let newCat = new Category(res.id, res.name, "", res.order, null, null);
+      questionnaire.$categories.push(newCat);
+    });
+  }
+
+  public newQuestion(cat: Category, order: number) {
+    return this.httpService.newQuestion(cat, order).then(res => {
+      let newq = new Question(res.text, res.id, null, null);
+      cat.questions.push(newq);
+    });
+  }
+
+  public deleteQuestion(question: Question, category: Category) {
+    return this.httpService.deleteQuestion(question.id).then(res => {
+      category.questions = category.questions.filter(q => { return q.id !== question.id });
+    });
+  }
+
+  public deleteCategory(cat: Category, questionnaire: Questionnaire) {
+    return this.httpService.deleteCategory(cat.id).then(res => {
+      questionnaire.$categories = questionnaire.$categories.filter(tmp => { return tmp.id !== cat.id });
+    });
+  }
+
+  public deleteQuestionnaire(questionnaire: Questionnaire) {
+    return this.httpService.deleteQuestionnarie(questionnaire.id).then(res => {
+    });
+  }
+
+  public updateAnswerSet(answerSet: AnswerSet) {
+    this.httpService.updateAnswerSet(answerSet).then(res => {
+      console.log("answer updated", res);
+    });
+  }
+
+
+  public removeAnswerSet(answerSet: AnswerSet) {
+    return this.httpService.deleteAnswerSet(answerSet).then(res => {
+      console.log("deleted", res);
+    });
+  }
+
 }

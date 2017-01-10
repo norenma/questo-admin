@@ -30,6 +30,12 @@ export class Questionnaire {
 	public get $categories(): Array<Category>  {
 		return this.categories;
 	}
+
+
+	public set $categories(value: Array<Category> ) {
+		this.categories = value;
+	}
+    
     /**
      * Adds a new category to the questionnaire.
      */

@@ -9,7 +9,7 @@
 }
 
 .modal-dialog.modal-lg {
-    max-width: 500px;
+    max-width: 750px;
     margin: 0 auto;
     top: 10vh;
     padding-bottom: 60px;
@@ -28,4 +28,12 @@
 
 a {
     color: rgba(15, 202, 170, 1);
+}
+
+.modal-content {
+    padding: 20px;
+    max-width: 750px;
+    margin: 0 auto;
+    top: 10vh;
+    padding-bottom: 60px;
 }

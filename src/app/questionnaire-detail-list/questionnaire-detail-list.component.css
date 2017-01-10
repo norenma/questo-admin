@@ -9,8 +9,14 @@ ul {
 .list-item-global {
     background-color: rgba(15, 202, 170, 1);
     color: white;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 20px;
+}
+
+.list-item-global.selected {
+    background-color: rgba(15, 202, 170, 1);
+    font-weight: 900;
+
 }
 
 .list-item-global:hover {
@@ -25,6 +31,11 @@ ul {
     height: 50px;
 }
 
+.list-container li.list-item-cat.selected {
+    background-color: rgba(15, 202, 170, 1);
+    font-weight: 600;
+}
+
 .list-container li.list-item-cat:hover {
     background-color: #16A58D;
 }
@@ -33,6 +44,7 @@ ul {
     border: solid 2px black;
     padding-top: 10px;
 }
+
 .list-item-question:hover {
     background-color: #16A58D;
 }
@@ -42,7 +54,8 @@ ul {
     position: fixed;
     left: 0px;
     top: 15vh;
-    min-width: 300px;
+    min-width: 250px;
+    max-width: 350px;
 }
 
 .list-container li {
@@ -56,4 +69,43 @@ ul {
     width: 96%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: none;
+}
+
+.list-container .selected .list-item-question {
+    font-weight: 600;
+}
+
+.list-container li.list-item-new-q {
+    position: relative;
+    left: 4%;
+    width: 96%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    padding-top: 10px;
+    font-style: italic;
+    height: 30px;
+    font-size: 12px;
+}
+
+.list-item-new-q:hover {
+    background-color: #16A58D;
+}
+
+.list-container li.list-item-new-cat {
+    background-color: rgba(15, 202, 170, 0.10);
+    width: 98%;
+    position: relative;
+    left: 2%;
+    height: 35px;
+    font-style: italic;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.selected-marker {
+    background-color: #16A58D;
+    width: 2%;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
 }

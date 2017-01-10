@@ -12,7 +12,7 @@ export class GlobalComponent implements OnInit {
 
   @Input()
   questionnaire: Questionnaire;
-  currentAnswer: any = -1;
+  currentAnswer: any = null;
   constructor(private questionnaires: QuestionnaireService) { }
 
   ngOnInit() {

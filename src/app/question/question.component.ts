@@ -1,8 +1,9 @@
-import { Questionnaire } from '../models/questionnaire';
-import { MediaFile } from '../models/media-file';
-import { QuestionnaireService } from '../questionnaire/questionnaire.service';
-import { Question } from '../models/question';
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import {Category} from '../models/category';
+import {Questionnaire} from '../models/questionnaire';
+import {MediaFile} from '../models/media-file';
+import {QuestionnaireService} from '../questionnaire/questionnaire.service';
+import {Question} from '../models/question';
+import {Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -14,15 +15,15 @@ export class QuestionComponent implements OnInit {
   @Input() question: Question;
   @ViewChild('audio') audio: ElementRef;
   @Input() questionnaire: Questionnaire;
+  @Output() onDelete = new EventEmitter();
   answer: any;
   currentSub: any;
+  
 
   constructor(private questionnaires: QuestionnaireService) { }
 
   ngOnInit() {
-    console.log("on init", this.question);
-    this.answer = this.question.answer.id;
-    this.currentSub = this.question.subScale ? this.question.subScale.id : null;
+
   }
 
   imageUploaded(data) {
@@ -59,6 +60,12 @@ export class QuestionComponent implements OnInit {
     let subscale = this.questionnaire.subscales.find(sub => { return sub.id === parseInt(event + "") });
     this.question.subScale = subscale;
     this.updateQuestion();
+  }
+
+  delete(){
+    let cat = this.questionnaire.$categories.find(tmp => {return this.question.catId === tmp.id});
+    this.onDelete.emit();
+    this.questionnaires.deleteQuestion(this.question, cat);
   }
 
 }

@@ -1,0 +1,44 @@
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.answer-item input,
+span {
+    display: inline-block;
+    width: 20%;
+}
+
+#edit-answer-items {
+    padding: 3px;
+}
+
+panel.panel-default.edit-items-panel {
+    margin-top: 20px;
+}
+
+.answer-item span.trash{
+    display: inline-block;
+    width: 10%;
+    margin-top: 10px;
+}
+
+audio {
+    width: 65%;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+}
+
+app-audio-upload {
+    width: 20%;
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+
+span.file-upload {
+    width: 45%;
+}
+
+
+

@@ -15,37 +15,28 @@
 
 
         <div class="row">
-          <div class="form-group">
-            <label for="input-share-to" class="control-label">Dela till</label>
-            <input type="text" name="input-to" id="input-share-to" placeholder="Ange namn eller email..." class="form-control" required="required">
+          <div class="input-group">
+
+            <select [(ngModel)]="currentAnswerId" name="" id="">
+              <option [value]="null" selected disabled> Välj svarsalternativ</option>
+
+              <option [value]="answerSet.id" *ngFor="let answerSet of questionnaire.answers"> {{answerSet.name}}</option>
+            </select>
+            <span class="">
+              <button class="btn btn-green" type="submit" (click)="addAnswerSet()">Lägg till uppsättning</button>
+            </span>
           </div>
         </div>
         <hr>
 
-        <label> Rättigheter </label>
-        <div class="rights-box"><label class="disabled">
-            <input type="checkbox" disabled checked="true">
-            Kan använda enkät
-          </label>
-          <label>
-            <input type="checkbox" value="">
-            Kan använda enkät
-          </label>
-        </div>
 
-        <label> Svar samlas in </label>
-        <div class="rights-box">
-          <label>
-            <input type="checkbox" value="">
-            Kan använda enkät
-          </label>
-          <label>
-            <input type="checkbox" value="">
-            Kan använda enkät
-          </label>
-        </div>
 
-        <button class="btn btn-share btn-green pull-right" (click)="lgModal.show()">Dela</button>
+
+
+        <app-edit-answers *ngIf="currentAnswerId !== null" [answer]="getAnswer()" (deleted)="answerDeleted($event)"> </app-edit-answers>
+
+
+
 
 
         <!--modal body end-->
@@ -56,4 +47,5 @@
 
     </div>
   </div>
-</div>
+</div> 
+

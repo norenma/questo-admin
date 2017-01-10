@@ -1,7 +1,8 @@
+import {Questionnaire} from '../models/questionnaire';
 import {MediaFile} from '../models/media-file';
 import {QuestionnaireService} from '../questionnaire/questionnaire.service';
 import {Category} from '../models/category';
-import {ElementRef, Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Output, Component, OnInit, Input, ViewChild, EventEmitter, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-category',
@@ -11,6 +12,8 @@ import {ElementRef, Component, OnInit, Input, ViewChild} from '@angular/core';
 export class CategoryComponent implements OnInit {
 
   @Input() category: Category;
+  @Input() questionnaire: Questionnaire;
+  @Output() onDelete = new EventEmitter();
   @ViewChild('audio') audio:ElementRef;
   constructor(private questionnaires: QuestionnaireService) { }
 
@@ -44,6 +47,9 @@ export class CategoryComponent implements OnInit {
     this.audio.nativeElement.load();
   }
 
-
+  delete(){
+    this.onDelete.emit();
+    this.questionnaires.deleteCategory(this.category, this.questionnaire);
+  }
 
 }

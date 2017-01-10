@@ -1,6 +1,6 @@
-import {Answer, AnswerSet} from './answer-set';
-import {Subscale} from './subscale';
-import {MediaFile} from './media-file';
+import { Answer, AnswerSet } from './answer-set';
+import { Subscale } from './subscale';
+import { MediaFile } from './media-file';
 export class Question {
 
     private _name: string;
@@ -9,6 +9,7 @@ export class Question {
     private _answer: AnswerSet;
     private _image: MediaFile;
     private _audio: MediaFile;
+    private _catId: number;
 
 
 
@@ -37,6 +38,14 @@ export class Question {
 
     public get audio(): MediaFile { return this._audio; }
     public set audio(value: MediaFile) { this._audio = value; }
+
+    public get catId(): number {
+        return this._catId;
+    }
+
+    public set catId(value: number) {
+        this._catId = value;
+    }
 
 }
 
