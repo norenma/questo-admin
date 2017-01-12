@@ -22,8 +22,8 @@
           <option [value]="answerSet.id" *ngFor="let answerSet of questionnaire.answers"> {{answerSet.name}}</option>
       </select>
 
-<!--<app-answers [questionnaire]="questionnaire" [currentAnswerId]="question.answer?.id"></app-answers>
--->
+      <app-answers [questionnaire]="questionnaire" [currentAnswerId]="question.answer?.id"></app-answers>
+
 
     </div>
 
@@ -34,7 +34,7 @@
         <option *ngFor="let sub of questionnaire.subscales" [value]="sub.id"> {{sub.name}}</option>
       </select>
 
-      <app-subscales [questionnaire]="questionnaire" (updated)="subscaleUpdated($event)"></app-subscales>
+      <app-subscales [questionnaire]="questionnaire"></app-subscales>
 
     </div>
 

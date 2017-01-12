@@ -1,4 +1,6 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import {Questionnaire} from '../models/questionnaire';
+import {HttpQuestionnaireService} from '../questionnaire/http-questionnaire.service';
+import {Component, ViewChild, Input, ViewContainerRef} from '@angular/core';
 
 // todo: change to ng2-bootstrap
 import { ModalDirective } from 'ng2-bootstrap';
@@ -11,8 +13,12 @@ import { ModalDirective } from 'ng2-bootstrap';
 })
 export class ShareComponent {
   @ViewChild('childModal') public childModal: ModalDirective;
+  @Input() questionnaire: Questionnaire;
 
-  constructor(private viewContainerRef: ViewContainerRef) {
+  write: boolean;
+  nameOrEmail: string;
+
+  constructor(private viewContainerRef: ViewContainerRef, private http: HttpQuestionnaireService) {
     this.viewContainerRef = viewContainerRef;
   }
   public showChildModal(): void {
@@ -22,5 +28,13 @@ export class ShareComponent {
   public hideChildModal(): void {
     this.childModal.hide();
   }
+
+  public share(){
+    this.http.share(this.questionnaire, this.nameOrEmail, this.write).then(res => {
+      console.log("shared", res);
+    });
+  }
+
+
 }
 

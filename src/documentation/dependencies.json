@@ -2,7 +2,14 @@
   {
     "name": "AnswersModule",
     "file": "app/answers/answers.module.ts",
-    "providers": [],
+    "providers": [
+      {
+        "name": "QuestionnaireService"
+      },
+      {
+        "name": "HttpQuestionnaireService"
+      }
+    ],
     "declarations": [
       {
         "name": "AnswersComponent",
@@ -93,71 +100,178 @@
     "imports": [
       {
         "name": "CommonModule"
+      },
+      {
+        "name": "ModalModule"
+      },
+      {
+        "name": "HttpModule"
+      },
+      {
+        "name": "FormsModule"
+      },
+      {
+        "name": "MediaUploadModule"
       }
     ],
-    "exports": [],
+    "exports": [
+      {
+        "name": "AnswersComponent"
+      }
+    ],
     "bootstrap": [],
     "__raw": [
       {
         "kind": 253,
-        "pos": 229,
-        "end": 263,
+        "pos": 591,
+        "end": 698,
         "flags": 0,
         "name": {
           "kind": 69,
-          "pos": 229,
-          "end": 239,
+          "pos": 591,
+          "end": 601,
           "flags": 0,
           "text": "imports"
         },
         "initializer": {
           "kind": 170,
-          "pos": 240,
-          "end": 263,
+          "pos": 602,
+          "end": 698,
           "flags": 0,
           "multiLine": true,
           "elements": [
             {
               "kind": 69,
-              "pos": 242,
-              "end": 259,
+              "pos": 604,
+              "end": 621,
               "flags": 0,
               "text": "CommonModule"
+            },
+            {
+              "kind": 69,
+              "pos": 622,
+              "end": 638,
+              "flags": 0,
+              "text": "ModalModule"
+            },
+            {
+              "kind": 69,
+              "pos": 639,
+              "end": 654,
+              "flags": 0,
+              "text": "HttpModule"
+            },
+            {
+              "kind": 69,
+              "pos": 655,
+              "end": 671,
+              "flags": 0,
+              "text": "FormsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 672,
+              "end": 694,
+              "flags": 0,
+              "text": "MediaUploadModule"
             }
           ]
         }
       },
       {
         "kind": 253,
-        "pos": 264,
-        "end": 321,
+        "pos": 699,
+        "end": 756,
         "flags": 0,
         "name": {
           "kind": 69,
-          "pos": 264,
-          "end": 279,
+          "pos": 699,
+          "end": 714,
           "flags": 0,
           "text": "declarations"
         },
         "initializer": {
           "kind": 170,
-          "pos": 280,
-          "end": 321,
+          "pos": 715,
+          "end": 756,
           "flags": 0,
           "elements": [
             {
               "kind": 69,
-              "pos": 282,
-              "end": 298,
+              "pos": 717,
+              "end": 733,
               "flags": 0,
               "text": "AnswersComponent"
             },
             {
               "kind": 69,
-              "pos": 299,
-              "end": 320,
+              "pos": 734,
+              "end": 755,
               "flags": 0,
               "text": "EditAnswersComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 757,
+        "end": 787,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 757,
+          "end": 767,
+          "flags": 0,
+          "text": "exports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 768,
+          "end": 787,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 770,
+              "end": 786,
+              "flags": 0,
+              "text": "AnswersComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 788,
+        "end": 850,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 788,
+          "end": 800,
+          "flags": 0,
+          "text": "providers"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 801,
+          "end": 850,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 803,
+              "end": 823,
+              "flags": 0,
+              "text": "QuestionnaireService"
+            },
+            {
+              "kind": 69,
+              "pos": 824,
+              "end": 849,
+              "flags": 0,
+              "text": "HttpQuestionnaireService"
             }
           ]
         }
@@ -268,9 +382,6 @@
         "name": "HeaderComponent"
       },
       {
-        "name": "QuestionComponent"
-      },
-      {
         "name": "QuestionnaireComponent"
       },
       {
@@ -283,110 +394,10 @@
         "name": "CategoryComponent"
       },
       {
-        "name": "ImageUploadComponent"
-      },
-      {
-        "name": "AudioUploadComponent"
-      },
-      {
         "name": "CategoryPreviewComponent"
       },
       {
-        "name": "QuestionPreviewComponent"
-      },
-      {
-        "name": "QuestionDetailComponent"
-      },
-      {
         "name": "ShareComponent"
-      },
-      {
-        "name": "SubscalesComponent"
-      },
-      {
-        "name": "AnswersComponent",
-        "file": "app/answers/answers.component.ts",
-        "selector": "app-answers",
-        "providers": [],
-        "templateUrl": [
-          "answers.component.html"
-        ],
-        "styleUrls": [
-          "answers.component.css"
-        ],
-        "__raw": [
-          {
-            "kind": 253,
-            "pos": 414,
-            "end": 440,
-            "flags": 0,
-            "name": {
-              "kind": 69,
-              "pos": 414,
-              "end": 425,
-              "flags": 0,
-              "text": "selector"
-            },
-            "initializer": {
-              "kind": 9,
-              "pos": 426,
-              "end": 440,
-              "flags": 0,
-              "text": "app-answers"
-            }
-          },
-          {
-            "kind": 253,
-            "pos": 441,
-            "end": 483,
-            "flags": 0,
-            "name": {
-              "kind": 69,
-              "pos": 441,
-              "end": 455,
-              "flags": 0,
-              "text": "templateUrl"
-            },
-            "initializer": {
-              "kind": 9,
-              "pos": 456,
-              "end": 483,
-              "flags": 0,
-              "text": "./answers.component.html"
-            }
-          },
-          {
-            "kind": 253,
-            "pos": 484,
-            "end": 525,
-            "flags": 0,
-            "name": {
-              "kind": 69,
-              "pos": 484,
-              "end": 496,
-              "flags": 0,
-              "text": "styleUrls"
-            },
-            "initializer": {
-              "kind": 170,
-              "pos": 497,
-              "end": 525,
-              "flags": 0,
-              "elements": [
-                {
-                  "kind": 9,
-                  "pos": 499,
-                  "end": 524,
-                  "flags": 0,
-                  "text": "./answers.component.css"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "name": "SubscalesListComponent"
       }
     ],
     "imports": [
@@ -408,18 +419,26 @@
       },
       {
         "ns": "NG2Bootstrap",
-        "name": "NG2Bootstrap.AlertModule"
+        "name": "NG2Bootstrap.AlertModule.forRoot()"
       },
       {
         "ns": "NG2Bootstrap",
-        "name": "NG2Bootstrap.ModalModule"
-      },
-      {
-        "ns": "DndModule",
-        "name": "DndModule.forRoot()"
+        "name": "NG2Bootstrap.ModalModule.forRoot()"
       },
       {
         "name": "AnswersModule"
+      },
+      {
+        "name": "MediaUploadModule"
+      },
+      {
+        "name": "ResultsModule"
+      },
+      {
+        "name": "QuestionModule"
+      },
+      {
+        "name": "SubscalesModule"
       }
     ],
     "exports": [],
@@ -431,213 +450,157 @@
     "__raw": [
       {
         "kind": 253,
-        "pos": 2349,
-        "end": 2834,
+        "pos": 2165,
+        "end": 2437,
         "flags": 0,
         "name": {
           "kind": 69,
-          "pos": 2349,
-          "end": 2364,
+          "pos": 2165,
+          "end": 2180,
           "flags": 0,
           "text": "declarations"
         },
         "initializer": {
           "kind": 170,
-          "pos": 2365,
-          "end": 2834,
+          "pos": 2181,
+          "end": 2437,
           "flags": 0,
           "multiLine": true,
           "elements": [
             {
               "kind": 69,
-              "pos": 2367,
-              "end": 2384,
+              "pos": 2183,
+              "end": 2200,
               "flags": 0,
               "text": "AppComponent"
             },
             {
               "kind": 69,
-              "pos": 2385,
-              "end": 2404,
+              "pos": 2201,
+              "end": 2220,
               "flags": 0,
               "text": "LoginComponent"
             },
             {
               "kind": 69,
-              "pos": 2405,
-              "end": 2436,
+              "pos": 2221,
+              "end": 2252,
               "flags": 0,
               "text": "QuestionnaireListComponent"
             },
             {
               "kind": 69,
-              "pos": 2437,
-              "end": 2457,
+              "pos": 2253,
+              "end": 2273,
               "flags": 0,
               "text": "HeaderComponent"
             },
             {
               "kind": 69,
-              "pos": 2458,
-              "end": 2480,
-              "flags": 0,
-              "text": "QuestionComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2481,
-              "end": 2508,
+              "pos": 2274,
+              "end": 2301,
               "flags": 0,
               "text": "QuestionnaireComponent"
             },
             {
               "kind": 69,
-              "pos": 2509,
-              "end": 2546,
+              "pos": 2302,
+              "end": 2339,
               "flags": 0,
               "text": "QuestionnaireDetailListComponent"
             },
             {
               "kind": 69,
-              "pos": 2547,
-              "end": 2567,
+              "pos": 2340,
+              "end": 2360,
               "flags": 0,
               "text": "GlobalComponent"
             },
             {
               "kind": 69,
-              "pos": 2568,
-              "end": 2590,
+              "pos": 2361,
+              "end": 2383,
               "flags": 0,
               "text": "CategoryComponent"
             },
             {
               "kind": 69,
-              "pos": 2591,
-              "end": 2616,
-              "flags": 0,
-              "text": "ImageUploadComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2617,
-              "end": 2642,
-              "flags": 0,
-              "text": "AudioUploadComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2643,
-              "end": 2672,
+              "pos": 2384,
+              "end": 2413,
               "flags": 0,
               "text": "CategoryPreviewComponent"
             },
             {
               "kind": 69,
-              "pos": 2673,
-              "end": 2702,
-              "flags": 0,
-              "text": "QuestionPreviewComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2703,
-              "end": 2731,
-              "flags": 0,
-              "text": "QuestionDetailComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2732,
-              "end": 2751,
+              "pos": 2414,
+              "end": 2433,
               "flags": 0,
               "text": "ShareComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2752,
-              "end": 2775,
-              "flags": 0,
-              "text": "SubscalesComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2776,
-              "end": 2797,
-              "flags": 0,
-              "text": "AnswersComponent"
-            },
-            {
-              "kind": 69,
-              "pos": 2798,
-              "end": 2825,
-              "flags": 0,
-              "text": "SubscalesListComponent"
             }
           ]
         }
       },
       {
         "kind": 253,
-        "pos": 2835,
-        "end": 3092,
+        "pos": 2438,
+        "end": 2774,
         "flags": 0,
         "name": {
           "kind": 69,
-          "pos": 2835,
-          "end": 2845,
+          "pos": 2438,
+          "end": 2448,
           "flags": 0,
           "text": "imports"
         },
         "initializer": {
           "kind": 170,
-          "pos": 2846,
-          "end": 3092,
+          "pos": 2449,
+          "end": 2774,
           "flags": 0,
           "multiLine": true,
           "elements": [
             {
               "kind": 69,
-              "pos": 2848,
-              "end": 2866,
+              "pos": 2451,
+              "end": 2469,
               "flags": 0,
               "text": "BrowserModule"
             },
             {
               "kind": 69,
-              "pos": 2867,
-              "end": 2883,
+              "pos": 2470,
+              "end": 2486,
               "flags": 0,
               "text": "FormsModule"
             },
             {
               "kind": 69,
-              "pos": 2884,
-              "end": 2899,
+              "pos": 2487,
+              "end": 2502,
               "flags": 0,
               "text": "HttpModule"
             },
             {
               "kind": 174,
-              "pos": 2900,
-              "end": 2936,
+              "pos": 2503,
+              "end": 2539,
               "flags": 0,
               "expression": {
                 "kind": 172,
-                "pos": 2900,
-                "end": 2925,
+                "pos": 2503,
+                "end": 2528,
                 "flags": 0,
                 "expression": {
                   "kind": 69,
-                  "pos": 2900,
-                  "end": 2917,
+                  "pos": 2503,
+                  "end": 2520,
                   "flags": 0,
                   "text": "RouterModule"
                 },
                 "name": {
                   "kind": 69,
-                  "pos": 2918,
-                  "end": 2925,
+                  "pos": 2521,
+                  "end": 2528,
                   "flags": 0,
                   "text": "forRoot"
                 }
@@ -645,8 +608,8 @@
               "arguments": [
                 {
                   "kind": 69,
-                  "pos": 2926,
-                  "end": 2935,
+                  "pos": 2529,
+                  "end": 2538,
                   "flags": 0,
                   "text": "appRoutes"
                 }
@@ -654,72 +617,85 @@
             },
             {
               "kind": 69,
-              "pos": 2937,
-              "end": 2959,
+              "pos": 2540,
+              "end": 2562,
               "flags": 0,
               "text": "Ng2UploaderModule"
             },
             {
-              "kind": 172,
-              "pos": 2960,
-              "end": 2989,
-              "flags": 0,
-              "expression": {
-                "kind": 69,
-                "pos": 2960,
-                "end": 2977,
-                "flags": 0,
-                "text": "NG2Bootstrap"
-              },
-              "name": {
-                "kind": 69,
-                "pos": 2978,
-                "end": 2989,
-                "flags": 0,
-                "text": "AlertModule"
-              }
-            },
-            {
-              "kind": 172,
-              "pos": 2990,
-              "end": 3019,
-              "flags": 0,
-              "expression": {
-                "kind": 69,
-                "pos": 2990,
-                "end": 3007,
-                "flags": 0,
-                "text": "NG2Bootstrap"
-              },
-              "name": {
-                "kind": 69,
-                "pos": 3008,
-                "end": 3019,
-                "flags": 0,
-                "text": "ModalModule"
-              }
-            },
-            {
               "kind": 174,
-              "pos": 3020,
-              "end": 3044,
+              "pos": 2563,
+              "end": 2602,
               "flags": 0,
               "expression": {
                 "kind": 172,
-                "pos": 3020,
-                "end": 3042,
+                "pos": 2563,
+                "end": 2600,
                 "flags": 0,
                 "expression": {
-                  "kind": 69,
-                  "pos": 3020,
-                  "end": 3034,
+                  "kind": 172,
+                  "pos": 2563,
+                  "end": 2592,
                   "flags": 0,
-                  "text": "DndModule"
+                  "expression": {
+                    "kind": 69,
+                    "pos": 2563,
+                    "end": 2580,
+                    "flags": 0,
+                    "text": "NG2Bootstrap"
+                  },
+                  "name": {
+                    "kind": 69,
+                    "pos": 2581,
+                    "end": 2592,
+                    "flags": 0,
+                    "text": "AlertModule"
+                  }
                 },
                 "name": {
                   "kind": 69,
-                  "pos": 3035,
-                  "end": 3042,
+                  "pos": 2593,
+                  "end": 2600,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": []
+            },
+            {
+              "kind": 174,
+              "pos": 2603,
+              "end": 2642,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 2603,
+                "end": 2640,
+                "flags": 0,
+                "expression": {
+                  "kind": 172,
+                  "pos": 2603,
+                  "end": 2632,
+                  "flags": 0,
+                  "expression": {
+                    "kind": 69,
+                    "pos": 2603,
+                    "end": 2620,
+                    "flags": 0,
+                    "text": "NG2Bootstrap"
+                  },
+                  "name": {
+                    "kind": 69,
+                    "pos": 2621,
+                    "end": 2632,
+                    "flags": 0,
+                    "text": "ModalModule"
+                  }
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 2633,
+                  "end": 2640,
                   "flags": 0,
                   "text": "forRoot"
                 }
@@ -728,43 +704,71 @@
             },
             {
               "kind": 69,
-              "pos": 3045,
-              "end": 3063,
+              "pos": 2643,
+              "end": 2661,
               "flags": 0,
               "text": "AnswersModule"
+            },
+            {
+              "kind": 69,
+              "pos": 2662,
+              "end": 2684,
+              "flags": 0,
+              "text": "MediaUploadModule"
+            },
+            {
+              "kind": 69,
+              "pos": 2685,
+              "end": 2703,
+              "flags": 0,
+              "text": "ResultsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 2704,
+              "end": 2723,
+              "flags": 0,
+              "text": "QuestionModule"
+            },
+            {
+              "kind": 69,
+              "pos": 2724,
+              "end": 2744,
+              "flags": 0,
+              "text": "SubscalesModule"
             }
           ]
         }
       },
       {
         "kind": 253,
-        "pos": 3093,
-        "end": 3155,
+        "pos": 2775,
+        "end": 2837,
         "flags": 0,
         "name": {
           "kind": 69,
-          "pos": 3093,
-          "end": 3105,
+          "pos": 2775,
+          "end": 2787,
           "flags": 0,
           "text": "providers"
         },
         "initializer": {
           "kind": 170,
-          "pos": 3106,
-          "end": 3155,
+          "pos": 2788,
+          "end": 2837,
           "flags": 0,
           "elements": [
             {
               "kind": 69,
-              "pos": 3108,
-              "end": 3132,
+              "pos": 2790,
+              "end": 2814,
               "flags": 0,
               "text": "HttpQuestionnaireService"
             },
             {
               "kind": 69,
-              "pos": 3133,
-              "end": 3154,
+              "pos": 2815,
+              "end": 2836,
               "flags": 0,
               "text": "QuestionnaireService"
             }
@@ -773,28 +777,1186 @@
       },
       {
         "kind": 253,
-        "pos": 3156,
-        "end": 3184,
+        "pos": 2838,
+        "end": 2866,
         "flags": 0,
         "name": {
           "kind": 69,
-          "pos": 3156,
-          "end": 3168,
+          "pos": 2838,
+          "end": 2850,
           "flags": 0,
           "text": "bootstrap"
         },
         "initializer": {
           "kind": 170,
-          "pos": 3169,
-          "end": 3184,
+          "pos": 2851,
+          "end": 2866,
           "flags": 0,
           "elements": [
             {
               "kind": 69,
-              "pos": 3171,
-              "end": 3183,
+              "pos": 2853,
+              "end": 2865,
               "flags": 0,
               "text": "AppComponent"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "MediaUploadModule",
+    "file": "app/file-upload/file-upload.module.ts",
+    "providers": [],
+    "declarations": [
+      {
+        "name": "ImageUploadComponent"
+      },
+      {
+        "name": "AudioUploadComponent",
+        "file": "app/audio-upload/audio-upload.component.ts",
+        "selector": "app-audio-upload",
+        "providers": [],
+        "templateUrl": [
+          "audio-upload.component.html"
+        ],
+        "styleUrls": [
+          "audio-upload.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 195,
+            "end": 226,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 195,
+              "end": 206,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 207,
+              "end": 226,
+              "flags": 0,
+              "text": "app-audio-upload"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 227,
+            "end": 274,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 227,
+              "end": 241,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 242,
+              "end": 274,
+              "flags": 0,
+              "text": "./audio-upload.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 275,
+            "end": 321,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 275,
+              "end": 287,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 288,
+              "end": 321,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 290,
+                  "end": 320,
+                  "flags": 0,
+                  "text": "./audio-upload.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FileSelectDirective"
+      },
+      {
+        "name": "FileDropDirective"
+      }
+    ],
+    "imports": [
+      {
+        "name": "CommonModule"
+      },
+      {
+        "name": "Ng2UploaderModule"
+      }
+    ],
+    "exports": [
+      {
+        "name": "AudioUploadComponent"
+      },
+      {
+        "name": "ImageUploadComponent"
+      }
+    ],
+    "bootstrap": [],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 392,
+        "end": 450,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 392,
+          "end": 402,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 403,
+          "end": 450,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 405,
+              "end": 422,
+              "flags": 0,
+              "text": "CommonModule"
+            },
+            {
+              "kind": 69,
+              "pos": 423,
+              "end": 445,
+              "flags": 0,
+              "text": "Ng2UploaderModule"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 451,
+        "end": 556,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 451,
+          "end": 466,
+          "flags": 0,
+          "text": "declarations"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 467,
+          "end": 556,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 469,
+              "end": 489,
+              "flags": 0,
+              "text": "ImageUploadComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 490,
+              "end": 515,
+              "flags": 0,
+              "text": "AudioUploadComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 516,
+              "end": 536,
+              "flags": 0,
+              "text": "FileSelectDirective"
+            },
+            {
+              "kind": 69,
+              "pos": 537,
+              "end": 555,
+              "flags": 0,
+              "text": "FileDropDirective"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 557,
+        "end": 613,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 557,
+          "end": 567,
+          "flags": 0,
+          "text": "exports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 568,
+          "end": 613,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 570,
+              "end": 590,
+              "flags": 0,
+              "text": "AudioUploadComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 591,
+              "end": 612,
+              "flags": 0,
+              "text": "ImageUploadComponent"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "QuestionModule",
+    "file": "app/question/question.module.ts",
+    "providers": [
+      {
+        "name": "QuestionnaireService"
+      },
+      {
+        "name": "HttpQuestionnaireService"
+      }
+    ],
+    "declarations": [
+      {
+        "name": "QuestionComponent",
+        "file": "app/question/question.component.ts",
+        "selector": "app-question",
+        "providers": [],
+        "templateUrl": [
+          "question.component.html"
+        ],
+        "styleUrls": [
+          "question.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 384,
+            "end": 411,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 384,
+              "end": 395,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 396,
+              "end": 411,
+              "flags": 0,
+              "text": "app-question"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 412,
+            "end": 455,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 412,
+              "end": 426,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 427,
+              "end": 455,
+              "flags": 0,
+              "text": "./question.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 456,
+            "end": 498,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 456,
+              "end": 468,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 469,
+              "end": 498,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 471,
+                  "end": 497,
+                  "flags": 0,
+                  "text": "./question.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "QuestionPreviewComponent"
+      }
+    ],
+    "imports": [
+      {
+        "name": "CommonModule"
+      },
+      {
+        "name": "MediaUploadModule"
+      },
+      {
+        "name": "BrowserModule"
+      },
+      {
+        "name": "FormsModule"
+      },
+      {
+        "name": "SubscalesModule"
+      }
+    ],
+    "exports": [
+      {
+        "name": "QuestionComponent"
+      }
+    ],
+    "bootstrap": [],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 640,
+        "end": 754,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 640,
+          "end": 650,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 651,
+          "end": 754,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 653,
+              "end": 670,
+              "flags": 0,
+              "text": "CommonModule"
+            },
+            {
+              "kind": 69,
+              "pos": 671,
+              "end": 693,
+              "flags": 0,
+              "text": "MediaUploadModule"
+            },
+            {
+              "kind": 69,
+              "pos": 694,
+              "end": 712,
+              "flags": 0,
+              "text": "BrowserModule"
+            },
+            {
+              "kind": 69,
+              "pos": 713,
+              "end": 729,
+              "flags": 0,
+              "text": "FormsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 730,
+              "end": 750,
+              "flags": 0,
+              "text": "SubscalesModule"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 755,
+        "end": 817,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 755,
+          "end": 770,
+          "flags": 0,
+          "text": "declarations"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 771,
+          "end": 817,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 773,
+              "end": 790,
+              "flags": 0,
+              "text": "QuestionComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 791,
+              "end": 816,
+              "flags": 0,
+              "text": "QuestionPreviewComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 818,
+        "end": 849,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 818,
+          "end": 828,
+          "flags": 0,
+          "text": "exports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 829,
+          "end": 849,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 831,
+              "end": 848,
+              "flags": 0,
+              "text": "QuestionComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 850,
+        "end": 912,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 850,
+          "end": 862,
+          "flags": 0,
+          "text": "providers"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 863,
+          "end": 912,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 865,
+              "end": 885,
+              "flags": 0,
+              "text": "QuestionnaireService"
+            },
+            {
+              "kind": 69,
+              "pos": 886,
+              "end": 911,
+              "flags": 0,
+              "text": "HttpQuestionnaireService"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "ResultsModule",
+    "file": "app/results/results.module.ts",
+    "providers": [
+      {
+        "name": "ResultsService"
+      }
+    ],
+    "declarations": [
+      {
+        "name": "ResultListComponent",
+        "file": "results/result-list/result-list.component.ts",
+        "selector": "app-result-list",
+        "providers": [],
+        "templateUrl": [
+          "result-list.component.html"
+        ],
+        "styleUrls": [
+          "result-list.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 145,
+            "end": 175,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 145,
+              "end": 156,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 157,
+              "end": 175,
+              "flags": 0,
+              "text": "app-result-list"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 176,
+            "end": 222,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 176,
+              "end": 190,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 191,
+              "end": 222,
+              "flags": 0,
+              "text": "./result-list.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 223,
+            "end": 268,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 223,
+              "end": 235,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 236,
+              "end": 268,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 238,
+                  "end": 267,
+                  "flags": 0,
+                  "text": "./result-list.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "imports": [
+      {
+        "name": "CommonModule"
+      },
+      {
+        "name": "FormsModule"
+      },
+      {
+        "name": "HttpModule"
+      }
+    ],
+    "exports": [
+      {
+        "name": "ResultListComponent"
+      }
+    ],
+    "bootstrap": [],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 319,
+        "end": 388,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 319,
+          "end": 329,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 330,
+          "end": 388,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 332,
+              "end": 349,
+              "flags": 0,
+              "text": "CommonModule"
+            },
+            {
+              "kind": 69,
+              "pos": 350,
+              "end": 366,
+              "flags": 0,
+              "text": "FormsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 367,
+              "end": 382,
+              "flags": 0,
+              "text": "HttpModule"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 389,
+        "end": 427,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 389,
+          "end": 404,
+          "flags": 0,
+          "text": "declarations"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 405,
+          "end": 427,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 407,
+              "end": 426,
+              "flags": 0,
+              "text": "ResultListComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 428,
+        "end": 458,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 428,
+          "end": 440,
+          "flags": 0,
+          "text": "providers"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 441,
+          "end": 458,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 443,
+              "end": 457,
+              "flags": 0,
+              "text": "ResultsService"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 459,
+        "end": 492,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 459,
+          "end": 469,
+          "flags": 0,
+          "text": "exports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 470,
+          "end": 492,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 472,
+              "end": 491,
+              "flags": 0,
+              "text": "ResultListComponent"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "SubscalesModule",
+    "file": "app/subscales/subscales.module.ts",
+    "providers": [
+      {
+        "name": "QuestionnaireService"
+      }
+    ],
+    "declarations": [
+      {
+        "name": "SubscalesListComponent",
+        "file": "subscales/subscales-list/subscales-list.component.ts",
+        "selector": "app-subscales-list",
+        "providers": [],
+        "templateUrl": [
+          "subscales-list.component.html"
+        ],
+        "styleUrls": [
+          "subscales-list.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 288,
+            "end": 321,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 288,
+              "end": 299,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 300,
+              "end": 321,
+              "flags": 0,
+              "text": "app-subscales-list"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 322,
+            "end": 371,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 322,
+              "end": 336,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 337,
+              "end": 371,
+              "flags": 0,
+              "text": "./subscales-list.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 372,
+            "end": 420,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 372,
+              "end": 384,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 385,
+              "end": 420,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 387,
+                  "end": 419,
+                  "flags": 0,
+                  "text": "./subscales-list.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "SubscalesComponent",
+        "file": "app/subscales/subscales.component.ts",
+        "selector": "app-subscales",
+        "providers": [],
+        "templateUrl": [
+          "subscales.component.html"
+        ],
+        "styleUrls": [
+          "subscales.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 369,
+            "end": 397,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 369,
+              "end": 380,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 381,
+              "end": 397,
+              "flags": 0,
+              "text": "app-subscales"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 398,
+            "end": 442,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 398,
+              "end": 412,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 413,
+              "end": 442,
+              "flags": 0,
+              "text": "./subscales.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 443,
+            "end": 486,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 443,
+              "end": 455,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 456,
+              "end": 486,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 458,
+                  "end": 485,
+                  "flags": 0,
+                  "text": "./subscales.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "imports": [
+      {
+        "name": "CommonModule"
+      },
+      {
+        "name": "FormsModule"
+      },
+      {
+        "name": "BrowserModule"
+      },
+      {
+        "ns": "DndModule",
+        "name": "DndModule.forRoot()"
+      },
+      {
+        "ns": "NG2Bootstrap",
+        "name": "NG2Bootstrap.ModalModule.forRoot()"
+      }
+    ],
+    "exports": [
+      {
+        "name": "SubscalesComponent"
+      }
+    ],
+    "bootstrap": [],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 501,
+        "end": 638,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 501,
+          "end": 511,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 512,
+          "end": 638,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 514,
+              "end": 531,
+              "flags": 0,
+              "text": "CommonModule"
+            },
+            {
+              "kind": 69,
+              "pos": 532,
+              "end": 548,
+              "flags": 0,
+              "text": "FormsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 549,
+              "end": 567,
+              "flags": 0,
+              "text": "BrowserModule"
+            },
+            {
+              "kind": 174,
+              "pos": 568,
+              "end": 592,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 568,
+                "end": 590,
+                "flags": 0,
+                "expression": {
+                  "kind": 69,
+                  "pos": 568,
+                  "end": 582,
+                  "flags": 0,
+                  "text": "DndModule"
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 583,
+                  "end": 590,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": []
+            },
+            {
+              "kind": 174,
+              "pos": 593,
+              "end": 632,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 593,
+                "end": 630,
+                "flags": 0,
+                "expression": {
+                  "kind": 172,
+                  "pos": 593,
+                  "end": 622,
+                  "flags": 0,
+                  "expression": {
+                    "kind": 69,
+                    "pos": 593,
+                    "end": 610,
+                    "flags": 0,
+                    "text": "NG2Bootstrap"
+                  },
+                  "name": {
+                    "kind": 69,
+                    "pos": 611,
+                    "end": 622,
+                    "flags": 0,
+                    "text": "ModalModule"
+                  }
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 623,
+                  "end": 630,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": []
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 639,
+        "end": 700,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 639,
+          "end": 654,
+          "flags": 0,
+          "text": "declarations"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 655,
+          "end": 700,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 657,
+              "end": 679,
+              "flags": 0,
+              "text": "SubscalesListComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 680,
+              "end": 699,
+              "flags": 0,
+              "text": "SubscalesComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 701,
+        "end": 733,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 701,
+          "end": 711,
+          "flags": 0,
+          "text": "exports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 712,
+          "end": 733,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 714,
+              "end": 732,
+              "flags": 0,
+              "text": "SubscalesComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 734,
+        "end": 770,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 734,
+          "end": 746,
+          "flags": 0,
+          "text": "providers"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 747,
+          "end": 770,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 749,
+              "end": 769,
+              "flags": 0,
+              "text": "QuestionnaireService"
             }
           ]
         }

@@ -68,4 +68,6 @@ export class QuestionComponent implements OnInit {
     this.questionnaires.deleteQuestion(this.question, cat);
   }
 
+    
+
 }

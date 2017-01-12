@@ -31,10 +31,13 @@ export class SubscalesListComponent implements OnInit, OnChanges {
   }
 
   update() {
-    console.log("update!");
-    this.sortSubscales()
-    console.log(this.subscales);
-    this.updated.emit(this.subscales);
+    setTimeout(() => {
+      console.log("update!");
+      this.sortSubscales()
+      console.log(this.subscales);
+      this.updated.emit(this.subscales);
+    });
+
   }
 
   get subscales() {

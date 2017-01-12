@@ -25,9 +25,7 @@ export class GlobalComponent implements OnInit {
   }
 
 
-  subscaleUpdated(sub: Subscale) {
-    this.questionnaires.subscaleUpdated(sub)
-  }
+
 
   sameAnswerChanged() {
     // Quirk cause angular updates model AFTER it triggers change listeners.

@@ -1,6 +1,7 @@
+import {HttpQuestionnaireService} from '../questionnaire/http-questionnaire.service';
 import {QuestionnaireService} from '../questionnaire/questionnaire.service';
 import {Subscale} from '../models/subscale';
-import {Component, Input, ViewChild, ViewContainerRef, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, ViewChild, ViewContainerRef, EventEmitter} from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap';
 
 
@@ -14,7 +15,7 @@ export class SubscalesComponent {
   @Output() updated = new EventEmitter();
   @ViewChild('childModal') public childModal: ModalDirective;
 
-  constructor(private viewContainerRef: ViewContainerRef) {
+  constructor(private viewContainerRef: ViewContainerRef, private http: HttpQuestionnaireService) {
     this.viewContainerRef = viewContainerRef;
   }
   public showChildModal(): void {
@@ -27,7 +28,9 @@ export class SubscalesComponent {
 
   orderUpdated(subscales: Array<Subscale>) {
     subscales.forEach(sub => {
-      this.updated.emit(sub);
+      //this.updated.emit(sub);
+      console.log("updatee", sub);
+      this.http.updateSubScale(sub);
     });
   }
 

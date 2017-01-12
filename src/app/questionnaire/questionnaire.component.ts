@@ -101,7 +101,8 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       cat.questions.forEach(q => {
         let id = q.id;
         let name = q.text;
-        let questionTmp: Question = new Question(name, id, null, null);
+        let order = q.order;
+        let questionTmp: Question = new Question(name, id, null, null, order);
         let imgId = q.question_image;
         let catId = q.category_id;
         this.addAudio(questionTmp, q.question_audio);

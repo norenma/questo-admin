@@ -1,18 +1,37 @@
 <div class="list-container" *ngIf="questionnaire">
   <ul>
-    <li class="list-item-global" (click)="goToGlobal(questionnaire.id)" [ngClass]="{selected: state === states.Global}"> {{questionnaire.name}} </li>
+    <li class="list-item-global" (click)="goToGlobal(questionnaire.id)" [ngClass]="{selected: state === states.Global}">
+      {{questionnaire.name}} </li>
     <div *ngFor="let category of questionnaire.categories">
-      <li class="list-item-cat" (click)="goToCat(category)" [ngClass]="{selected: state === states.Category && currentId === category.id}">
-        {{category.name}}
-      </li>
-      <div  *ngFor="let question of category.questions" [ngClass]="{selected: state === states.Question && currentId === question.id}">
-        <div class="selected-marker" *ngIf="state === states.Question && currentId === question.id"></div>
-        <li class="list-item-question" (click)="goToQuestion(question)">
-          {{question.name}}
+
+      <!--Real container-->
+      <div dnd-sortable-container (onDropEnd)="updatee()" [dropZones]="['boxers-zone']" [sortableData]="category.questions" *ngIf="category.questions.length > 0"
+        (onDragOver)="update()">
+        <li class="list-item-cat" (click)="goToCat(category)" [ngClass]="{selected: state === states.Category && currentId === category.id}">
+          {{category.name}}
         </li>
+        <div *ngFor="let question of category.questions; let i = index" (onDragEnd)="update()" (onDropSuccess)="update()" (onDragStart)="startUpdateTimer()"
+          dnd-sortable [sortableIndex]="i" [ngClass]="{selected: state === states.Question && currentId === question.id}">
+          <div class="selected-marker" *ngIf="state === states.Question && currentId === question.id"></div>
+          <li class="list-item-question" (click)="goToQuestion(question)">
+            {{question.name}}
+          </li>
+        </div>
+        <li class="list-item-new-q" (click)="newQuestion(category)">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ny fråga </li>
       </div>
-      <li class="list-item-new-q" (click)="newQuestion(category)">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ny fråga </li>
+
+      <!--Fake container-->
+      <div dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="category.questions" *ngIf="category.questions.length === 0"
+        (onDragEndCallback)="update()" (onDragOver)="update()">
+        <li class="list-item-cat" (click)="goToCat(category)" [ngClass]="{selected: state === states.Category && currentId === category.id}">
+          {{category.name}}
+        </li>
+        <li class="list-item-new-q" (click)="newQuestion(category)">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ny fråga </li>
+      </div>
+      <!--/// Fake container-->
+
     </div>
     <li class="list-item-new-cat" (click)="newCat()"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ny instruktion </li>
   </ul>

@@ -10,15 +10,17 @@ export class Question {
     private _image: MediaFile;
     private _audio: MediaFile;
     private _catId: number;
+    private _order: number;
 
 
 
-    constructor(name: string, id: number, subScale: any, answer: any,
+    constructor(name: string, id: number, subScale: any, answer: any, order: number,
         image?: string, sound?: string) {
         this._name = name;
         this._id = id;
         this._subScale = subScale;
         this._answer = answer;
+        this._order = order;
     }
 
     public get name(): string { return this._name; }
@@ -46,6 +48,16 @@ export class Question {
     public set catId(value: number) {
         this._catId = value;
     }
+
+
+	public get order(): number {
+		return this._order;
+	}
+
+	public set order(value: number) {
+		this._order = value;
+	}
+    
 
 }
 

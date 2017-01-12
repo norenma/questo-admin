@@ -9,21 +9,26 @@ import { Injectable } from '@angular/core';
 import { Questionnaire } from '../models/questionnaire';
 
 
+
 @Injectable()
 export class QuestionnaireService {
 
-  private _questionnaires: Array<Questionnaire> = [];
+  private _questionnaires: Array<Questionnaire>;
   constructor(private httpService: HttpQuestionnaireService) {
-    this.httpService.getQuestionnaires(1).then(questionnaires => {
+    this.updateQuestionnaires();
+    this.httpService.$logout.subscribe(() => { this.questionnaires = null });
+  }
+
+  updateQuestionnaires() {
+    this._questionnaires = [];
+    this.httpService.getQuestionnaires().then(questionnaires => {
       questionnaires.forEach(questionnaire => {
         this.questionnaires.push(new Questionnaire(questionnaire.name,
-          questionnaire.id, false, "hej", false, null))
+          questionnaire.id, false, "", false, null))
       });
-      console.log(this.questionnaires);
-      //this.questionnaires = resp.json();
-
     });
   }
+
 
   getQuestionImage(question: Question) {
     return this.httpService.getQuestion(question.id).then(q => {
@@ -37,6 +42,12 @@ export class QuestionnaireService {
   public get questionnaires(): Array<Questionnaire> {
     return this._questionnaires;
   }
+  public set questionnaires(value: Array<Questionnaire>) {
+    this._questionnaires = value;
+  }
+
+
+
 
   public updateQuestion(question: Question) {
     console.log("update q", question);
@@ -47,6 +58,12 @@ export class QuestionnaireService {
     console.log('updating questionnaire:', questionnaire);
     this.httpService.updateQuestionnaire(questionnaire).then(res => {
       console.log('questionnaire updated', res);
+    });
+  }
+
+  public createQuestionnaire() {
+    return this.httpService.createQuestionnaire().then(res => {
+      console.log('questionnaire created', res);
     });
   }
 
@@ -86,7 +103,7 @@ export class QuestionnaireService {
 
   public newQuestion(cat: Category, order: number) {
     return this.httpService.newQuestion(cat, order).then(res => {
-      let newq = new Question(res.text, res.id, null, null);
+      let newq = new Question(res.text, res.id, null, null, order);
       cat.questions.push(newq);
     });
   }

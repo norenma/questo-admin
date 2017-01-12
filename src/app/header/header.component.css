@@ -5,12 +5,12 @@
 
 .navbar-brand {
     padding: 8px;
-    margin-left: 20px;
+    margin-left: 160px;
 }
 
 .dropdown-toggle.user-dropdown {
     background-color: white;
-    margin-right: 35px;
+    margin-right: 65px;
     border: solid 1px #CCCCCC;
     border-radius: 26px;
     padding: 20px;
@@ -20,4 +20,28 @@
     color: black;
     margin-bottom: 3px;
     margin-top: 3px;
+}
+
+nav .navbar-right.user-menu button {
+    border-radius: 20px;
+    margin-right: 160px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+nav .navbar-right.user-menu .dropdown-menu {
+    margin-right: 160px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+nav navbar-nav navbar-right user-menu {
+    padding: 0;
+    margin: 0;
+}
+
+
+ul {
+    padding: 5px;
+    padding-top: 12px;
 }

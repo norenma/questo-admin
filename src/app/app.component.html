@@ -1,2 +1,3 @@
-<app-header></app-header>
+<app-header (openCreateUser)="openCreate()"></app-header>
+<app-create-user [open]="$openCreateUser"></app-create-user>
 <router-outlet></router-outlet>

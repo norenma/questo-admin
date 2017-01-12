@@ -3,20 +3,22 @@ import { QuestionnaireService } from '../questionnaire/questionnaire.service';
 import { State } from '../questionnaire/questionnaire.component';
 import { Router } from '@angular/router';
 import { Questionnaire } from '../models/questionnaire';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-questionnaire-detail-list',
   templateUrl: './questionnaire-detail-list.component.html',
   styleUrls: ['./questionnaire-detail-list.component.css']
 })
-export class QuestionnaireDetailListComponent implements OnInit {
+export class QuestionnaireDetailListComponent implements OnInit, OnChanges {
 
   @Input()
   questionnaire: Questionnaire;
   private state: State = State.Global;
   private currentId;
   private states = State;
+
+  private updatedSinceStart: boolean = true;
 
   @Output() stateChanged = new EventEmitter();
 
@@ -25,6 +27,18 @@ export class QuestionnaireDetailListComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ngOnChanges() {
+    this.sort();
+  }
+
+  sort() {
+    this.questionnaire.$categories.forEach(cat => {
+      cat.questions = cat.questions.sort((a, b) => {
+        return a.order - b.order;
+      });
+    });
   }
 
   goToGlobal() {
@@ -56,5 +70,32 @@ export class QuestionnaireDetailListComponent implements OnInit {
   newQuestion(cat: Category) {
     console.log(cat);
     this.questionnaires.newQuestion(cat, cat.questions.length);
+  }
+
+  update() {
+    setTimeout(() => {
+      this.updatedSinceStart = true;
+      this.questionnaire.$categories.forEach(cat => {
+        cat.questions.forEach((q, i) => {
+          q.catId = cat.id;
+          q.order = i;
+          this.questionnaires.updateQuestion(q);
+        });
+      });
+      console.log("HEJ");
+    });
+  }
+
+  startUpdateTimer() {
+    this.updatedSinceStart = false;
+    setTimeout(() => {
+      if (!this.updatedSinceStart) {
+        this.update();
+      }
+    }, 7000);
+  }
+
+  updatee() {
+    console.log("HEEEEJ");
   }
 }

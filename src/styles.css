@@ -16,6 +16,10 @@
     font-weight: 100;
 }
 
+a {
+    color: rgba(15, 202, 170, 1) !important;
+
+}
 ul {
     list-style-type: none;
 }

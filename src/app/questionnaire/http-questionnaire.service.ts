@@ -1,4 +1,5 @@
-import { Answer, AnswerSet } from '../models/answer-set';
+import { Router } from '@angular/router';
+import { AnswerSet, Answer } from '../models/answer-set';
 import { Subscale } from '../models/subscale';
 
 import { Category } from '../models/category';
@@ -7,14 +8,21 @@ import { Question } from '../models/question';
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Headers, Response } from '@angular/http';
 
+
 import 'rxjs/add/operator/toPromise';
+import { Subject } from 'rxjs';
 
 
 
 @Injectable()
 export class HttpQuestionnaireService {
   private userId: number;
+  private userName: string = "";
   private baseUrl = 'http://0.0.0.0:3000/'
+
+  private logoutSource = new Subject();
+  $logout = this.logoutSource.asObservable();
+
   constructor(private http: Http) {
     this.init();
   }
@@ -25,34 +33,80 @@ export class HttpQuestionnaireService {
     }).catch(this.handleError);
   }
 
+  share(questionnaire: Questionnaire, username_or_email: string, write: boolean) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body =
+      {
+        'username_or_email': username_or_email,
+        'questionnaire_id': questionnaire.id,
+        'write_permission': write
+      }
+    return this.http.post(this.baseUrl + 'api/rights/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  createUser(email: string, userName: string, password: string, createUser: boolean, createQuestionnaires: boolean) {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body =
+      {
+        'username:': userName,
+        'email': email,
+        'password': password,
+        'create_user_permission': createUser,
+        'create_questionnaire_permission': createQuestionnaires,
+        'user_id': this.userId
+      }
+    return this.http.post(this.baseUrl + 'api/users/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
   callFirst() {
     console.log("called!");
     return this.http.get(this.baseUrl, { withCredentials: true })
       .toPromise();
   }
 
+  getUser = () => {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    return this.http.get(this.baseUrl + 'api/sessions', options)
+      .toPromise().then(this.extractData).then(this.setUserId).catch(this.handleError);
+  }
+
 
   login(user: User) {
     let options: RequestOptionsArgs = {};
     options.withCredentials = true;
-    return this.http.post(this.baseUrl + 'api/users/login', { 'username': user.username, 'password': user.password }, options)
+    return this.http.post(this.baseUrl + 'api/users/login', { 'username_or_email': user.username, 'login_password': user.password }, options)
       .toPromise().then(this.extractData).then(this.setUserId).catch(this.handleError);
   }
 
+  logout() {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    this.userId = null;
+    this.userName = null;
+    this.logoutSource.next();
+    return this.http.get(this.baseUrl + 'api/users/logout', options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
   private setUserId = (res: any): any => {
     console.log("rees", res);
     console.log("this", this);
-    this.userId = res.id;
+    this.userId = res.id ? res.id : res.userId;
+    this.userName = res.username ? res.username : res.name;
     return res;
   }
 
-  getQuestionnaires(id: number): Promise<any> {
+  getQuestionnaires(): Promise<any> {
     let options: RequestOptionsArgs = {};
     options.withCredentials = true;
     // options.responseType = ResponseContentType.Json;
     options.headers = new Headers({ 'Content-Type': 'application/json' });
     console.log(options);
-    return this.http.get(this.baseUrl + 'api/questionnaires/fetchAllForUser/' + id, options)
+    return this.http.get(this.baseUrl + 'api/questionnaires/allForUserWithRights/fetch', options)
       .toPromise().then(this.extractData).catch(this.handleError);
   }
 
@@ -97,7 +151,9 @@ export class HttpQuestionnaireService {
       'question_img': question.image ? question.image.id : null,
       'audio': question.audio ? question.audio.id : null,
       'subscale': question.subScale ? question.subScale.id : null,
-      'answer': question.answer ? question.answer.id : null
+      'answer': question.answer ? question.answer.id : null,
+      'order': question.order,
+      'category_id': question.catId
     }
     return this.http.patch(this.baseUrl + 'api/questions/' + question.id, body, options)
       .toPromise().catch(this.handleError);
@@ -251,7 +307,7 @@ export class HttpQuestionnaireService {
     let body = {
       'label': answer.label,
       'value': answer.value,
-      'audio': answer.audio.id
+      'audio': answer.audio ? answer.audio.id : null
     }
     return this.http.patch(this.baseUrl + 'api/response_options_items/' + answer.id, body, options)
       .toPromise().catch(this.handleError);
@@ -266,6 +322,35 @@ export class HttpQuestionnaireService {
     return this.http.post(this.baseUrl + 'api/response_options_items/', body, options)
       .toPromise().then(this.extractData).catch(this.handleError);
   }
+
+  public createQuestionnaire() {
+    let options: RequestOptionsArgs = {};
+    options.withCredentials = true;
+    let body = {
+      'user_id': this.userId
+    }
+    return this.http.post(this.baseUrl + 'api/questionnaires/', body, options)
+      .toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+
+  public get $userName(): string {
+    return this.userName;
+  }
+
+  public set $userName(value: string) {
+    this.userName = value;
+  }
+
+
+  public get $userId(): number {
+    return this.userId;
+  }
+
+  public set $userId(value: number) {
+    this.userId = value;
+  }
+
 
 
 

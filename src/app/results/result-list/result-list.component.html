@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Resultat</h2>
+
+  <ul class="list-group">
+    <li class="list-heading">
+      <span> 
+        <label>
+          <input type="checkbox" value="" [ngModel]="isAllTrue()" (ngModelChange)="setAllTrue($event)">
+          Välj alla
+        </label>
+      </span>
+      <span>TestID</span>
+      <span>Antal svar</span>
+      <span>Senaste svar</span>
+    </li>
+    <li class="list-group-item result-item" *ngFor="let result of results">
+      <span> 
+        <label>
+          <input type="checkbox" value="" [(ngModel)]="result.selected">
+        </label>
+      </span>
+      <span>{{result.id}}</span>
+      <span>{{result.nbrAnswers}}</span>
+      <span>{{result.lastAnswer}}</span>
+    </li>
+  </ul>
+  
+<button type="button" class="btn btn-default btn-green" (click)="download()">Ladda ner .CVS-fil</button>
+  
+</div> 

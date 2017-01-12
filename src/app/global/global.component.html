@@ -5,7 +5,7 @@
 
     </div>
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-      <app-share></app-share>
+      <app-share [questionnaire]="questionnaire"></app-share>
     </div>
   </div>
 
@@ -14,7 +14,8 @@
   <!--name-->
   <label for="name-form">Namn</label>
   <div class="input-group name">
-    <input type="text" [(ngModel)]="questionnaire.name" class="form-control" id="name-form" aria-describedby="basic-addon3">
+<input type="text" [(ngModel)]="questionnaire.name" (change)="questionnaireUpdated()"  class="form-control" id="name-form"
+  aria-describedby="basic-addon3">
   </div>
 
   <!--description-->
