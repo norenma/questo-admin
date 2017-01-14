@@ -18,7 +18,7 @@ import { Subject } from 'rxjs';
 export class HttpQuestionnaireService {
   private userId: number;
   private userName: string = "";
-  private baseUrl = 'http://0.0.0.0:3000/'
+  private baseUrl = 'http://virt09.itu.chalmers.se/'
 
   private logoutSource = new Subject();
   $logout = this.logoutSource.asObservable();
