@@ -20,6 +20,7 @@ export class AudioUploadComponent implements OnInit {
   sizeLimit = 2000000;
 
 
+
   public uploader: FileUploader = new FileUploader({ url: URL });
 
   ngOnInit() {
