@@ -18,7 +18,7 @@ export class ImageUploadComponent implements OnInit {
 
     ngOnInit() {
         this.options = {
-            url: 'http://norenma.github.io/api/media_files'
+            url: 'http://virt09.itu.chalmers.se/api/media_files'
         };
     }
     handleUpload(data): void {

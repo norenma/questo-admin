@@ -3,7 +3,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 
 
-const URL = 'http://norenma.github.io/api/media_files';
+const URL = 'http://virt09.itu.chalmers.se/api/media_files';
 
 @Component({
   selector: 'app-audio-upload',
