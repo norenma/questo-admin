@@ -35,7 +35,7 @@ export class QuestionnaireService {
       console.log("q", q);
       return this.httpService.getMediaFile(q.question_image).then(res => {
         console.log("res2", res);
-        return new MediaFile(res.id, 'http://0.0.0.0:3000/uploads/' + res.ref);
+        return new MediaFile(res.id, 'http://virt09.itu.chalmers.se/uploads/' + res.ref);
       });
     });
   }

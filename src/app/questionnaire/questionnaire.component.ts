@@ -121,7 +121,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     if (id) {
       this.http.getMediaFile(id).then(res => {
         console.log("res", res);
-        let imgUrl = 'http://0.0.0.0:3000/uploads/' + res.ref;
+        let imgUrl = 'http://virt09.itu.chalmers.se/uploads/' + res.ref;
         let imgFile = new MediaFile(id, imgUrl);
         hasImage.image = imgFile;
       });
@@ -134,7 +134,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     if (id) {
       this.http.getMediaFile(id).then(res => {
         console.log("res", res);
-        let audioUrl = 'http://0.0.0.0:3000/uploads/' + res.ref;
+        let audioUrl = 'http://virt09.itu.chalmers.se/uploads/' + res.ref;
         let audioFile = new MediaFile(id, audioUrl);
         hasAudio.audio = audioFile;
       });

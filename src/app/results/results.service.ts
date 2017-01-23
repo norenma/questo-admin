@@ -2,7 +2,7 @@ import { Http, RequestOptionsArgs, Headers, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Result } from './result';
 
-const URL = 'http://0.0.0.0:3000/'
+const URL = 'http://virt09.itu.chalmers.se/'
 
 @Injectable()
 export class ResultsService {

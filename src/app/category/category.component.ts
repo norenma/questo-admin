@@ -29,7 +29,7 @@ export class CategoryComponent implements OnInit {
 
   imageUploaded(data) {
     console.log(data);
-    let imgUrl = 'http://0.0.0.0:3000/uploads/' + data.ref;
+    let imgUrl = 'http://virt09.itu.chalmers.se/uploads/' + data.ref;
     console.log("img uploaded");
     let imgFile = new MediaFile(data.id, imgUrl);
     this.category.image = imgFile;
@@ -39,7 +39,7 @@ export class CategoryComponent implements OnInit {
 
   audioUploaded(data) {
     console.log(data);
-    let audioUrl = 'http://0.0.0.0:3000/uploads/' + data.ref;
+    let audioUrl = 'http://virt09.itu.chalmers.se/uploads/' + data.ref;
     console.log("audio uploaded");
     let audioFile = new MediaFile(data.id, audioUrl);
     this.category.audio = audioFile;

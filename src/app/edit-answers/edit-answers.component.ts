@@ -64,7 +64,7 @@ export class EditAnswersComponent implements OnInit {
   audioUploaded(data, answer: Answer) {
     console.log("here");
     console.log(data, answer);
-    let audioUrl = 'http://0.0.0.0:3000/uploads/' + data.ref;
+    let audioUrl = 'http://virt09.itu.chalmers.se/uploads/' + data.ref;
     console.log("audio uploaded");
     let audioFile = new MediaFile(data.id, audioUrl);
     answer.audio = audioFile;
