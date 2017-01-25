@@ -51,7 +51,7 @@ export class HttpQuestionnaireService {
     options.withCredentials = true;
     let body =
       {
-        'username:': userName,
+        'username': userName,
         'email': email,
         'password': password,
         'create_user_permission': createUser,
