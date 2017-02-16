@@ -5,7 +5,7 @@
     max-width: 500px;
     margin: 0 auto;
     top: 10vh;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
 }
 
 .rights-box label {
@@ -14,9 +14,30 @@
 }
 
 .modal-body .btn-share {
-    margin-top: 30px;
+/*    margin-top: 30px;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 20px;*/
 }
 
+.show {
+    display: inline-block;
+}
 
+.hide {
+    display: none;
+}
+
+.error-message {
+    margin: 5px;
+    color: rgba(255, 0, 0, 0.6);
+}
+
+.success {
+    /*color: rgba(0  , 200, 200, 0.9);*/
+    color: #00C851;
+
+    display: inline-block;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}

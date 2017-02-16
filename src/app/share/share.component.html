@@ -18,7 +18,10 @@
         <div class="row">
           <div class="form-group">
             <label for="input-share-to" class="control-label">Dela till</label>
-            <input type="text" name="input-to" id="input-share-to" [(ngModel)]="nameOrEmail" placeholder="Ange namn eller email..." class="form-control" required="required">
+            <input type="text" name="input-to" id="input-share-to" [(ngModel)]="nameOrEmail" placeholder="Ange namn eller email..." class="form-control"
+              required="required">
+            <p class="error-message hide" [ngClass]="{show: fail}"> Användare existerar inte </p>
+
           </div>
         </div>
         <hr>
@@ -46,9 +49,16 @@
           </label>
         </div>
 
-        <button class="btn btn-share btn-green pull-right" (click)="lgModal.show()" (click)="share()">Dela</button>
 
-          
+        <div class="row">
+
+          <button class="btn btn-share btn-green pull-right" (click)="lgModal.show()" (click)="share()">Dela</button>
+
+        </div>
+        <p class="success hide" [ngClass]="{show: success}"> Formulär delat! </p>
+
+
+
         <!--modal body end-->
       </div>
 
@@ -56,5 +66,5 @@
 
 
     </div>
-  </div> 
+  </div>
 </div>

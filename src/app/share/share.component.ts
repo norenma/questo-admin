@@ -17,6 +17,8 @@ export class ShareComponent {
 
   write: boolean;
   nameOrEmail: string;
+  private fail : boolean = false;
+  private success = false;
 
   constructor(private viewContainerRef: ViewContainerRef, private http: HttpQuestionnaireService) {
     this.viewContainerRef = viewContainerRef;
@@ -32,6 +34,16 @@ export class ShareComponent {
   public share(){
     this.http.share(this.questionnaire, this.nameOrEmail, this.write).then(res => {
       console.log("shared", res);
+      if(res.status === 'fail') {
+        console.log("FAIl");
+        this.fail = true;
+        
+      } else if (res.status === 'OK') {
+        console.log("SUCCESS");
+        this.fail = false;
+        this.success = true;
+        setTimeout(() => {this.success = false;}, 7000);
+      }
     });
   }
 

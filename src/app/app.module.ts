@@ -1,3 +1,4 @@
+import {TruncatePipe} from './Util/truncate';
 import { SubscalesModule } from './subscales/subscales.module';
 import { Ng2UploaderModule } from 'ng2-uploader';
 import { QuestionModule } from './question/question.module';
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     CategoryComponent,
     CategoryPreviewComponent,
     ShareComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

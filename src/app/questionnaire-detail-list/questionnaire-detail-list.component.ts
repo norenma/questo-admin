@@ -1,14 +1,15 @@
-import { Category } from '../models/category';
-import { QuestionnaireService } from '../questionnaire/questionnaire.service';
-import { State } from '../questionnaire/questionnaire.component';
-import { Router } from '@angular/router';
-import { Questionnaire } from '../models/questionnaire';
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import * as q from 'q';
+import {Category} from '../models/category';
+import {QuestionnaireService} from '../questionnaire/questionnaire.service';
+import {State} from '../questionnaire/questionnaire.component';
+import {Router} from '@angular/router';
+import {Questionnaire} from '../models/questionnaire';
+import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-questionnaire-detail-list',
   templateUrl: './questionnaire-detail-list.component.html',
-  styleUrls: ['./questionnaire-detail-list.component.css']
+  styleUrls: ['./questionnaire-detail-list.component.css'],
 })
 export class QuestionnaireDetailListComponent implements OnInit, OnChanges {
 
